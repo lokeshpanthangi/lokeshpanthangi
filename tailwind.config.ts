@@ -62,6 +62,9 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			perspective: {
+				'1000': '1000px',
+			},
 			keyframes: {
 				"accordion-down": {
 					from: { height: "0" },
@@ -127,5 +130,18 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities, theme }: any) {
+			const newUtilities = {
+				'.perspective-1000': {
+					perspective: '1000px'
+				},
+				'.preserve-3d': {
+					transformStyle: 'preserve-3d'
+				}
+			};
+			addUtilities(newUtilities);
+		}
+	],
 } satisfies Config;

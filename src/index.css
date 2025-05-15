@@ -137,8 +137,7 @@
   }
 
   .card-3d {
-    @apply transition-all duration-300 hover:shadow-xl transform perspective-1000;
-    transform-style: preserve-3d;
+    @apply transition-all duration-300 hover:shadow-xl transform perspective-1000 preserve-3d;
   }
 
   .card-3d:hover {
@@ -208,7 +207,7 @@
 
 /* 3D Carousel for projects */
 .carousel-3d {
-  perspective: 1000px;
+  @apply perspective-1000;
   transform-style: preserve-3d;
 }
 
