@@ -52,16 +52,19 @@ const projectsData: Project[] = [
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          entries[0].target.classList.add('opacity-100');
-          entries[0].target.classList.remove('opacity-0', 'translate-y-10');
+          const projects = entries[0].target.querySelectorAll('.project-card');
+          projects.forEach((project, index) => {
+            setTimeout(() => {
+              (project as HTMLElement).classList.add('opacity-100');
+              (project as HTMLElement).classList.remove('opacity-0', 'translate-y-10');
+            }, 100 * index);
+          });
         }
       },
       { threshold: 0.1 }
@@ -84,21 +87,6 @@ const Projects = () => {
     // Re-enable page scrolling
     document.body.style.overflow = 'auto';
   };
-  
-  const rotateCarousel = (direction: number) => {
-    const totalProjects = projectsData.length;
-    let newIndex = currentIndex + direction;
-    
-    if (newIndex < 0) newIndex = totalProjects - 1;
-    if (newIndex >= totalProjects) newIndex = 0;
-    
-    setCurrentIndex(newIndex);
-    
-    // Rotate the carousel
-    if (carouselRef.current) {
-      carouselRef.current.style.transform = `rotateY(${newIndex * -(360 / totalProjects)}deg)`;
-    }
-  };
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-dark/90">
@@ -107,89 +95,46 @@ const Projects = () => {
         
         <div 
           ref={projectsRef}
-          className="mt-12 transition-all duration-1000 opacity-0 translate-y-10"
+          className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
-          <div className="carousel-container relative h-[500px] md:h-[600px] flex justify-center items-center overflow-hidden">
-            {/* 3D Carousel Controls */}
-            <button 
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-dark/80 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:scale-110 transition-transform"
-              onClick={() => rotateCarousel(-1)}
+          {projectsData.map((project) => (
+            <div 
+              key={project.id}
+              className="project-card opacity-0 translate-y-10 transition-all duration-500 cursor-pointer"
+              onClick={() => openModal(project)}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
-            <div className="carousel-3d w-full max-w-3xl h-full relative">
-              <div 
-                ref={carouselRef}
-                className="carousel-rotating-items absolute w-full h-full transition-transform duration-1000" 
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                {projectsData.map((project, index) => {
-                  // Calculate rotation and position
-                  const theta = 2 * Math.PI / projectsData.length;
-                  const angle = theta * index;
-                  const radius = 300;
-                  
-                  return (
-                    <div 
-                      key={project.id}
-                      onClick={() => openModal(project)}
-                      className="absolute w-72 md:w-80 h-96 top-1/2 left-1/2 cursor-pointer"
-                      style={{
-                        transform: `rotateY(${angle * (180/Math.PI)}deg) translateZ(${radius}px)`,
-                        transformStyle: 'preserve-3d',
-                        backfaceVisibility: 'hidden',
-                        transition: 'transform 0.5s ease, opacity 0.5s ease',
-                        opacity: Math.abs(index - currentIndex) <= 1 ? 1 : 0.6,
-                      }}
-                    >
-                      <div className="card-3d bg-white dark:bg-dark/80 shadow-lg rounded-xl overflow-hidden h-full w-full">
-                        <div className="h-1/2 overflow-hidden">
-                          <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-2">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-1 mt-2">
-                            {project.technologies.slice(0, 3).map((tech) => (
-                              <span 
-                                key={tech} 
-                                className="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary/20 rounded"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                            {project.technologies.length > 3 && (
-                              <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
-                                +{project.technologies.length - 3}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="card-3d bg-white dark:bg-dark/80 shadow-lg rounded-xl overflow-hidden h-full">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1 mt-3">
+                    {project.technologies.slice(0, 3).map((tech) => (
+                      <span 
+                        key={tech} 
+                        className="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary/20 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+                        +{project.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <button 
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-dark/80 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:scale-110 transition-transform"
-              onClick={() => rotateCarousel(1)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+          ))}
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react';
+import { Badge } from 'lucide-react';
 
 interface Certificate {
   id: number;
@@ -107,16 +108,20 @@ const Certificates = () => {
         
         <div 
           ref={certificatesRef}
-          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {certificatesData.map((certificate) => (
             <div 
               key={certificate.id}
-              className="certificate-card opacity-0 translate-y-10 transition-all duration-700 floating"
+              className="certificate-card opacity-0 translate-y-10 transition-all duration-700"
               onClick={() => openModal(certificate)}
-              style={{ animationDelay: `${Math.random() * 2}s` }}
             >
               <div className="relative h-64 group overflow-hidden rounded-lg">
+                {/* Badge Icon on Top Right */}
+                <div className="absolute top-3 right-3 z-10 bg-white dark:bg-dark/90 p-2 rounded-full shadow-md">
+                  <Badge className="text-primary w-5 h-5" />
+                </div>
+                
                 <img
                   src={certificate.image}
                   alt={certificate.name}
@@ -124,7 +129,8 @@ const Certificates = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 text-white">
                   <h3 className="text-lg font-bold mb-1">{certificate.name}</h3>
-                  <p>{certificate.issuer}</p>
+                  <p className="text-white/90">{certificate.issuer}</p>
+                  <p className="text-white/70 text-sm">{certificate.date}</p>
                 </div>
               </div>
             </div>
@@ -139,7 +145,10 @@ const Certificates = () => {
           {selectedCertificate && (
             <div>
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold">{selectedCertificate.name}</h3>
+                <div className="flex items-center gap-2">
+                  <Badge className="text-primary w-5 h-5" />
+                  <h3 className="text-2xl font-bold">{selectedCertificate.name}</h3>
+                </div>
                 <button 
                   onClick={closeModal}
                   className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"

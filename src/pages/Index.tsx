@@ -3,14 +3,12 @@ import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Education from '@/components/Education';
 import Projects from '@/components/Projects';
 import Resume from '@/components/Resume';
-import Hackathons from '@/components/Hackathons';
+import Skills from '@/components/Skills';
 import Certificates from '@/components/Certificates';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Cursor from '@/components/Cursor';
 import ScrollIndicator from '@/components/ScrollIndicator';
 
 const Index = () => {
@@ -79,16 +77,14 @@ const Index = () => {
 
   return (
     <div className="relative">
-      <Cursor />
       <ScrollIndicator />
       <Header />
       <main>
         <Hero />
         <About />
-        <Education />
+        <Skills />
         <Projects />
         <Resume />
-        <Hackathons />
         <Certificates />
         <Contact />
       </main>
