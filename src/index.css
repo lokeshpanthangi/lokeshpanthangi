@@ -407,4 +407,208 @@
   .animate-spin-slow {
     animation: spin-slow 10s linear infinite;
   }
+  
+  .bg-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+  
+  .animate-name-glow {
+    animation: name-reveal 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes name-reveal {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(-10px);
+    letter-spacing: 0.2em;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    letter-spacing: normal;
+  }
+}
+
+.certificate-shine-once {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.6) 40%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0.1) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  animation: certificate-shine-once 1.5s ease-out forwards;
+}
+
+@keyframes certificate-shine-once {
+  0% {
+    transform: translateY(100%) rotate(45deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(45deg);
+  }
+}
+
+.award-icon-container-new {
+  @apply bg-white dark:bg-dark/90 p-3 rounded-full shadow-md flex items-center justify-center relative overflow-hidden;
+  transition: transform 0.3s ease;
+}
+
+.award-icon-container-new-large {
+  @apply bg-white dark:bg-dark/90 p-4 rounded-full shadow-md flex items-center justify-center relative overflow-hidden;
+}
+
+.award-icon-container-new::before,
+.award-icon-container-new-large::before {
+  content: '';
+  @apply absolute inset-0 opacity-0;
+  background: radial-gradient(circle, rgba(58, 134, 255, 0.6) 0%, rgba(58, 134, 255, 0) 70%);
+}
+
+.pulse-once::before {
+  animation: award-pulse-once 1.2s ease-out forwards;
+}
+
+@keyframes award-pulse-once {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.download-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(58, 134, 255, 0.5);
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: download-shine 3s infinite;
+}
+
+@keyframes download-shine {
+  0% {
+    left: -50%;
+    top: -50%;
+  }
+  100% {
+    left: 150%;
+    top: 150%;
+  }
+}
+
+.award-icon-continuous {
+  animation: shine-effect 5s ease-in-out infinite;
+  transform-origin: center;
+  position: relative;
+}
+
+@keyframes shine-effect {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(58, 134, 255, 0.1));
+    color: #3a86ff;
+    opacity: 0.7;
+  }
+  25% {
+    filter: drop-shadow(0 0 15px rgba(58, 134, 255, 0.9));
+    color: #00ccff;
+    opacity: 1;
+  }
+  50% {
+    filter: drop-shadow(0 0 2px rgba(58, 134, 255, 0.3));
+    color: #3a86ff;
+    opacity: 0.8;
+  }
+  75% {
+    filter: drop-shadow(0 0 20px rgba(58, 134, 255, 1));
+    color: #00f2ff;
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(58, 134, 255, 0.1));
+    color: #3a86ff;
+    opacity: 0.7;
+  }
+}
+
+@keyframes float-rotate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    filter: drop-shadow(0 0 3px rgba(58, 134, 255, 0.4));
+  }
+  25% {
+    transform: translateY(-3px) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(58, 134, 255, 0.7));
+  }
+  50% {
+    transform: translateY(-5px) rotate(10deg);
+    filter: drop-shadow(0 0 12px rgba(58, 134, 255, 0.9));
+  }
+  75% {
+    transform: translateY(-3px) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(58, 134, 255, 0.7));
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    filter: drop-shadow(0 0 3px rgba(58, 134, 255, 0.4));
+  }
 }

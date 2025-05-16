@@ -59,6 +59,7 @@ const Certificates = () => {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const certificatesRef = useRef<HTMLDivElement>(null);
+  const [hoveredCards, setHoveredCards] = useState<{[key: number]: boolean}>({});
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -108,13 +109,28 @@ const Certificates = () => {
               key={certificate.id}
               className="certificate-card opacity-0 translate-y-10 transition-all duration-700"
               onClick={() => openModal(certificate)}
+              onMouseEnter={() => {
+                if (!hoveredCards[certificate.id]) {
+                  setHoveredCards(prev => ({ ...prev, [certificate.id]: true }));
+                  // Reset the hover state after animation completes
+                  setTimeout(() => {
+                    setHoveredCards(prev => ({ ...prev, [certificate.id]: false }));
+                  }, 1500);
+                }
+              }}
+              onMouseLeave={() => {
+                setHoveredCards(prev => ({ ...prev, [certificate.id]: false }));
+              }}
             >
               <div className="relative h-48 group overflow-hidden rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6">
-                {/* Award Icon with Enhanced Animation */}
+                {/* Shimmering effect overlay */}
+                <div className={`absolute inset-0 bg-white/5 transition-opacity duration-700 ${hoveredCards[certificate.id] ? 'opacity-100' : 'opacity-0'}`}>
+                  <div className={`absolute inset-0 ${hoveredCards[certificate.id] ? 'certificate-shine-once' : ''}`}></div>
+                </div>
+                
+                {/* Award Icon with Continuous Animation */}
                 <div className="absolute top-3 right-3 z-10">
-                  <div className="award-icon-container">
-                    <Award className="award-icon text-primary w-6 h-6" />
-                  </div>
+                  <Award className="text-primary w-6 h-6 award-icon-continuous" />
                 </div>
                 
                 <div className="flex flex-col justify-between h-full">
@@ -143,9 +159,7 @@ const Certificates = () => {
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="award-icon-container-large">
-                    <Award className="award-icon text-primary w-8 h-8" />
-                  </div>
+                  <Award className="text-primary w-8 h-8 award-icon-continuous" />
                   <h3 className="text-2xl font-bold">{selectedCertificate.name}</h3>
                 </div>
                 <button 

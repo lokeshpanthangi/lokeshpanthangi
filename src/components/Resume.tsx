@@ -23,7 +23,7 @@ const Resume = () => {
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-title">Resume</h2>
         
-        <div className="mt-12 max-w-4xl mx-auto">
+        <div className="mt-12 max-w-6xl mx-auto">
           <div className="bg-gray-50 dark:bg-gray-900 p-6 md:p-10 rounded-xl shadow-md">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
               <div>
@@ -34,7 +34,7 @@ const Resume = () => {
               <button
                 onClick={handleDownload}
                 disabled={isLoading}
-                className={`mt-4 md:mt-0 flex items-center gap-2 px-5 py-2 rounded-lg text-white bg-primary hover:bg-primary/90 transition-colors ${
+                className={`mt-4 md:mt-0 flex items-center gap-2 px-5 py-2 rounded-lg text-white bg-primary hover:bg-primary/90 transition-colors download-btn ${
                   isLoading ? 'opacity-75 cursor-not-allowed' : ''
                 }`}
               >

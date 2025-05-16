@@ -68,11 +68,9 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="text-center">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-white">
-            <span className="block">Hi, I'm</span>
+            <span className="inline-block">Hi, I'm</span>{' '}
             {!nameAnimationComplete ? (
-              <div className="h-20 mt-4">
-                <span className="text-primary inline-block animate-text-reveal">Venkat</span>
-              </div>
+              <span className="text-primary inline-block animate-text-reveal">Venkat</span>
             ) : (
               <span className="text-primary inline-block">Venkat</span>
             )}

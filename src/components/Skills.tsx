@@ -53,17 +53,15 @@ const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const categories = Array.from(new Set(skillsData.map(skill => skill.category)));
   
+  // Animation effect when section comes into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          const categoryButtons = entries[0].target.querySelectorAll('.category-button');
-          categoryButtons.forEach((button, index) => {
-            setTimeout(() => {
-              (button as HTMLElement).classList.add('opacity-100');
-              (button as HTMLElement).classList.remove('opacity-0', 'translate-y-4');
-            }, 50 * index);
-          });
+          // Set initial category if not already set
+          if (!activeCategory && categories.length > 0) {
+            setActiveCategory(categories[0]);
+          }
         }
       },
       { threshold: 0.1 }
@@ -72,7 +70,7 @@ const Skills = () => {
     if (skillsRef.current) observer.observe(skillsRef.current);
     
     return () => observer.disconnect();
-  }, []);
+  }, [activeCategory, categories]);
 
   // If no category is selected, show all skills initially
   useEffect(() => {
@@ -101,7 +99,7 @@ const Skills = () => {
               <button
                 key={category}
                 onClick={() => handleCategoryClick(category)}
-                className={`category-button px-6 py-3 rounded-lg text-lg font-medium opacity-0 translate-y-4 transition-all duration-300 
+                className={`category-button px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300 
                   ${activeCategory === category 
                     ? 'bg-primary text-white shadow-lg shadow-primary/30' 
                     : 'bg-white dark:bg-dark/80 text-gray-700 dark:text-gray-300 hover:shadow-md border-2 border-gray-200 dark:border-gray-700'}`}

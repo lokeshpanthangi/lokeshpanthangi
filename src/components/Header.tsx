@@ -6,6 +6,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [nameAnimated, setNameAnimated] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +16,22 @@ const Header = () => {
     
     window.addEventListener('scroll', handleScroll);
     
-    // Start name animation once after component mounts
-    setTimeout(() => {
+    // Check if animation has been played before
+    const animationPlayed = sessionStorage.getItem('nameAnimationPlayed');
+    
+    if (!animationPlayed) {
+      // Start name animation once after component mounts
+      setTimeout(() => {
+        setNameAnimated(true);
+        setHasAnimated(true);
+        // Mark animation as played for this session
+        sessionStorage.setItem('nameAnimationPlayed', 'true');
+      }, 800);
+    } else {
+      // Skip animation if already played
       setNameAnimated(true);
-    }, 500);
+      setHasAnimated(true);
+    }
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
