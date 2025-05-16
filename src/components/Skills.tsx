@@ -99,10 +99,7 @@ const Skills = () => {
               <button
                 key={category}
                 onClick={() => handleCategoryClick(category)}
-                className={`category-button px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300 
-                  ${activeCategory === category 
-                    ? 'bg-primary text-white shadow-lg shadow-primary/30' 
-                    : 'bg-white dark:bg-dark/80 text-gray-700 dark:text-gray-300 hover:shadow-md border-2 border-gray-200 dark:border-gray-700'}`}
+                className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
               >
                 {category}
               </button>
@@ -114,9 +111,9 @@ const Skills = () => {
             {filteredSkills.map((skill) => (
               <button
                 key={skill.id}
-                className="skill-button bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 
-                  border border-gray-200 dark:border-gray-700 px-5 py-3 rounded-lg text-lg font-medium text-gray-800 dark:text-gray-200
-                  transition-all duration-300 hover:shadow-lg hover:shadow-blue-400/60 
+                className="skill-button bg-blue-50 dark:bg-dark/80 backdrop-blur-sm
+                  border border-gray-200/50 dark:border-gray-700/50 px-5 py-3 rounded-lg text-lg font-medium text-gray-700 dark:text-gray-300
+                  transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 hover:border-primary/50
                   transform hover:-translate-y-1 focus:outline-none animate-appear"
               >
                 {skill.name}

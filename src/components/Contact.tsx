@@ -47,7 +47,7 @@ const Contact = () => {
         <h2 className="section-title">Get In Touch</h2>
         
         <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="pl-4 md:pl-8">
+          <div className="pl-4 md:pl-12 pt-8 md:pt-12">
             <h3 className="text-2xl font-bold mb-6">Contact Info</h3>
             
             <div className="space-y-6">

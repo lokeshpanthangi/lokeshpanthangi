@@ -122,7 +122,7 @@ const Certificates = () => {
                 setHoveredCards(prev => ({ ...prev, [certificate.id]: false }));
               }}
             >
-              <div className="relative h-48 group overflow-hidden rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6">
+              <div className="relative h-48 group overflow-hidden rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800/80 dark:to-gray-900/90 p-6 shadow-lg dark:shadow-blue-500/10">
                 {/* Shimmering effect overlay */}
                 <div className={`absolute inset-0 bg-white/5 transition-opacity duration-700 ${hoveredCards[certificate.id] ? 'opacity-100' : 'opacity-0'}`}>
                   <div className={`absolute inset-0 ${hoveredCards[certificate.id] ? 'certificate-shine-once' : ''}`}></div>
