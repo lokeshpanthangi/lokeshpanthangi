@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 export const ThemeToggle = () => {
   const [theme, setTheme] = useState('light');
@@ -28,21 +29,22 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-700 focus:outline-none transition-colors duration-500"
+      className="theme-toggle-btn relative w-14 h-7 rounded-full bg-gradient-to-r from-blue-200 to-blue-400 dark:from-indigo-900 dark:to-purple-900 shadow-inner transition-all duration-500 p-1"
       aria-label="Toggle dark mode"
     >
-      <span 
-        className={`absolute left-1 top-1 w-4 h-4 rounded-full transition-all duration-500 ${
+      <div 
+        className={`absolute top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full shadow transition-all duration-500 ${
           theme === 'dark' 
-            ? 'transform translate-x-6 bg-primary' 
-            : 'bg-yellow-400'
+            ? 'right-1 bg-indigo-800 text-yellow-200' 
+            : 'left-1 bg-yellow-300 text-amber-800'
         }`}
       >
-        {/* Sun/Moon icon */}
-        <span className="absolute inset-0 flex items-center justify-center text-[8px]">
-          {theme === 'dark' ? '🌙' : '☀️'}
-        </span>
-      </span>
+        {theme === 'dark' ? (
+          <Moon className="w-4 h-4 animate-pulse" />
+        ) : (
+          <Sun className="w-4 h-4 animate-spin-slow" />
+        )}
+      </div>
     </button>
   );
 };

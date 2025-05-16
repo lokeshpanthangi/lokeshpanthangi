@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Space+Mono&display=swap');
 
 @tailwind base;
@@ -178,12 +177,12 @@
   /* Award icon animation */
   .award-icon-container {
     @apply bg-white dark:bg-dark/90 p-3 rounded-full shadow-md flex items-center justify-center;
-    animation: pulse-glow 2s ease-in-out infinite, spin 8s linear infinite;
+    animation: shine-effect 3s ease-in-out infinite;
   }
   
   .award-icon-container-large {
     @apply bg-white dark:bg-dark/90 p-4 rounded-full shadow-md flex items-center justify-center;
-    animation: pulse-glow 2s ease-in-out infinite, spin 8s linear infinite;
+    animation: shine-effect 3s ease-in-out infinite;
   }
   
   .award-icon {
@@ -276,6 +275,29 @@
   }
 }
 
+@keyframes shine-effect {
+  0% {
+    opacity: 0.4;
+    filter: brightness(100%);
+  }
+  25% {
+    opacity: 1;
+    filter: brightness(200%);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(150%);
+  }
+  75% {
+    opacity: 1;
+    filter: brightness(200%);
+  }
+  100% {
+    opacity: 0.4;
+    filter: brightness(100%);
+  }
+}
+
 @keyframes text-reveal {
   0% {
     opacity: 0;
@@ -323,4 +345,66 @@
 
 .timeline-item:nth-child(odd) .timeline-content {
   @apply sm:mr-0 sm:ml-auto;
+}
+
+/* Social icons animation */
+.social-icon-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.social-icon-btn:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  overflow: hidden;
+}
+
+.theme-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+  transform: translateX(-100%);
+  transition: transform 1s;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.theme-toggle-btn:hover::before {
+  transform: translateX(100%);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin-slow 10s linear infinite;
+  }
 }

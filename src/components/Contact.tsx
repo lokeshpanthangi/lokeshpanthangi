@@ -99,7 +99,7 @@ const Contact = () => {
                     href="https://github.com" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
+                    className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
                     aria-label="GitHub"
                   >
                     <Github className="h-6 w-6 text-gray-700 dark:text-gray-300" />
@@ -108,14 +108,14 @@ const Contact = () => {
                     href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer" 
-                    className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
+                    className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="h-6 w-6 text-gray-700 dark:text-gray-300" />
                   </a>
                   <a 
                     href="mailto:example@example.com"
-                    className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
+                    className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
                     aria-label="Email"
                   >
                     <Mail className="h-6 w-6 text-gray-700 dark:text-gray-300" />
