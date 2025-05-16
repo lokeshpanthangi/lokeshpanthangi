@@ -101,11 +101,12 @@ const Blogs = () => {
   };
 
   return (
-    <section id="blogs" className="py-20 bg-gray-50 dark:bg-dark/95 relative overflow-hidden">
+    <section id="blogs" className="py-20 bg-gradient-to-b from-gray-100 to-gray-50 dark:from-dark/90 dark:to-dark/95 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-60 h-60 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-secondary/5 dark:bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-primary/5 to-secondary/5 rounded-full blur-3xl opacity-30"></div>
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -118,15 +119,18 @@ const Blogs = () => {
           {blogsData.map((blog, index) => (
             <div 
               key={blog.id}
-              className="blog-card opacity-0 translate-y-10 rotate-3 scale-95 transition-all duration-700 cursor-pointer"
+              className="blog-card opacity-0 translate-y-10 rotate-3 scale-95 transition-all duration-700 cursor-pointer perspective-1000"
               onClick={() => openModal(blog)}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="h-full rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg hover:shadow-[0_0_20px_rgba(58,134,255,0.6)] transition-all duration-500 transform hover:-translate-y-2">
-                {/* Blog header with icon */}
-                <div className="p-6 h-full flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="p-2 bg-primary/10 rounded-full mr-3 animate-pulse-glow">
+              <div className="h-full rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl dark:hover:shadow-[0_0_25px_rgba(59,134,255,0.4)] transition-all duration-500 transform preserve-3d hover:-translate-y-2">
+                {/* Blog header with enhanced animation */}
+                <div className="p-6 h-full flex flex-col relative overflow-hidden">
+                  {/* Animated corner decoration */}
+                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-md"></div>
+                  
+                  <div className="flex items-center mb-4 relative z-10">
+                    <div className="p-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full mr-3 animate-pulse-glow">
                       <BookOpen className="h-5 w-5 text-primary" />
                     </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400">
@@ -134,15 +138,15 @@ const Blogs = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 line-clamp-2">{blog.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">{blog.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow line-clamp-3">{blog.summary}</p>
                   
-                  {/* Blog tags */}
+                  {/* Blog tags with enhanced styling */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {blog.tags.slice(0, 2).map((tag, idx) => (
                       <span 
                         key={idx} 
-                        className="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium"
+                        className="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300"
                       >
                         {tag}
                       </span>
@@ -160,7 +164,7 @@ const Blogs = () => {
         </div>
       </div>
       
-      {/* Enhanced blog modal */}
+      {/* Enhanced blog modal with animations */}
       <div className={`fixed inset-0 z-50 ${modalOpen ? 'modal-open' : 'hidden'}`}>
         <div className="modal-overlay" onClick={closeModal}></div>
         <div className="modal-content">
@@ -170,7 +174,7 @@ const Blogs = () => {
                 <h3 className="text-2xl md:text-3xl font-bold">{selectedBlog.title}</h3>
                 <button 
                   onClick={closeModal}
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-300"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -202,7 +206,7 @@ const Blogs = () => {
               <div className="pt-4 text-center">
                 <button
                   onClick={() => handleReadMore(selectedBlog.url)}
-                  className="px-8 py-3 bg-primary text-white font-medium rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:translate-y-[-2px]"
+                  className="px-8 py-3 bg-gradient-to-r from-primary to-primary/80 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.03] hover:shadow-lg hover:shadow-primary/30"
                 >
                   Read Full Article
                 </button>

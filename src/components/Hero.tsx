@@ -6,14 +6,14 @@ const Hero = () => {
   const nameRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Check local storage to see if the animation has already been shown
-    const animationShown = localStorage.getItem('nameAnimationShown');
+    // Check session storage to see if the animation has already been shown
+    const animationShown = sessionStorage.getItem('heroAnimationShown');
     
     if (!animationShown) {
       // If animation hasn't been shown, mark it as complete after timeout
       const timer = setTimeout(() => {
         setNameAnimationComplete(true);
-        localStorage.setItem('nameAnimationShown', 'true');
+        sessionStorage.setItem('heroAnimationShown', 'true');
       }, 3000); // 3 seconds for animation
       
       return () => clearTimeout(timer);
