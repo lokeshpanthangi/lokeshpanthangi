@@ -66,13 +66,13 @@ const Blogs = () => {
           const items = entries[0].target.querySelectorAll('.blog-card');
           items.forEach((item, index) => {
             setTimeout(() => {
-              (item as HTMLElement).classList.add('opacity-100', 'translate-y-0');
-              (item as HTMLElement).classList.remove('opacity-0', 'translate-y-10');
-            }, 100 * index);
+              (item as HTMLElement).classList.add('opacity-100', 'translate-y-0', 'rotate-0', 'scale-100');
+              (item as HTMLElement).classList.remove('opacity-0', 'translate-y-10', 'rotate-3', 'scale-95');
+            }, 150 * index);
           });
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
     );
     
     if (blogsRef.current) observer.observe(blogsRef.current);
@@ -94,27 +94,39 @@ const Blogs = () => {
   const handleReadMore = (url: string) => {
     window.open(url, '_blank');
     closeModal();
+    toast({
+      title: "Opening blog post",
+      description: "Redirecting to the full article",
+    });
   };
 
   return (
-    <section id="blogs" className="py-20 bg-gray-50 dark:bg-dark/95">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="blogs" className="py-20 bg-gray-50 dark:bg-dark/95 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-60 h-60 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-secondary/5 dark:bg-secondary/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <h2 className="section-title">My Blog</h2>
         
         <div 
           ref={blogsRef}
-          className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {blogsData.map((blog) => (
+          {blogsData.map((blog, index) => (
             <div 
               key={blog.id}
-              className="blog-card opacity-0 translate-y-10 transition-all duration-700 hover:translate-y-[-8px] cursor-pointer"
+              className="blog-card opacity-0 translate-y-10 rotate-3 scale-95 transition-all duration-700 cursor-pointer"
               onClick={() => openModal(blog)}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="h-full rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg hover:shadow-[0_0_15px_rgba(58,134,255,0.5)] transition-all duration-500">
+              <div className="h-full rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg hover:shadow-[0_0_20px_rgba(58,134,255,0.6)] transition-all duration-500 transform hover:-translate-y-2">
+                {/* Blog header with icon */}
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex items-center mb-4">
-                    <div className="p-2 bg-primary/10 rounded-full mr-3">
+                    <div className="p-2 bg-primary/10 rounded-full mr-3 animate-pulse-glow">
                       <BookOpen className="h-5 w-5 text-primary" />
                     </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400">
@@ -125,6 +137,7 @@ const Blogs = () => {
                   <h3 className="text-xl font-bold mb-3 line-clamp-2">{blog.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow line-clamp-3">{blog.summary}</p>
                   
+                  {/* Blog tags */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {blog.tags.slice(0, 2).map((tag, idx) => (
                       <span 
@@ -147,7 +160,7 @@ const Blogs = () => {
         </div>
       </div>
       
-      {/* Blog Modal */}
+      {/* Enhanced blog modal */}
       <div className={`fixed inset-0 z-50 ${modalOpen ? 'modal-open' : 'hidden'}`}>
         <div className="modal-overlay" onClick={closeModal}></div>
         <div className="modal-content">

@@ -1,8 +1,9 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const Hero = () => {
   const [nameAnimationComplete, setNameAnimationComplete] = useState(false);
+  const nameRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     // Check local storage to see if the animation has already been shown
@@ -21,6 +22,24 @@ const Hero = () => {
       setNameAnimationComplete(true);
     }
   }, []);
+
+  // Animated name effect
+  useEffect(() => {
+    if (nameAnimationComplete && nameRef.current) {
+      // Apply individual letter animation after main animation completes
+      const nameElement = nameRef.current;
+      const text = nameElement.textContent || '';
+      nameElement.innerHTML = '';
+      
+      text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.className = 'hero-name-letter inline-block';
+        span.style.animationDelay = `${i * 0.1}s`;
+        nameElement.appendChild(span);
+      });
+    }
+  }, [nameAnimationComplete]);
 
   // Simple parallax effect
   useEffect(() => {
@@ -74,7 +93,7 @@ const Hero = () => {
                 <span className="text-primary inline-block animate-text-reveal">Venkat</span>
               </div>
             ) : (
-              <span className="text-primary inline-block">Venkat</span>
+              <span ref={nameRef} className="text-primary inline-block hero-name">Venkat</span>
             )}
           </h1>
           

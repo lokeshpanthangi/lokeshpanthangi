@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -13,6 +13,15 @@ import Footer from '@/components/Footer';
 import ScrollIndicator from '@/components/ScrollIndicator';
 
 const Index = () => {
+  // Refs for all sections to apply scroll animations
+  const aboutRef = useRef<HTMLElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const resumeRef = useRef<HTMLElement>(null);
+  const blogsRef = useRef<HTMLElement>(null);
+  const certificatesRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
+  
   // Smooth scroll behavior
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
@@ -76,21 +85,115 @@ const Index = () => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
+  // Set up intersection observers for scroll animations
+  useEffect(() => {
+    const sectionRefs = [
+      { ref: aboutRef, className: 'about-section' },
+      { ref: skillsRef, className: 'skills-section' },
+      { ref: projectsRef, className: 'projects-section' },
+      { ref: resumeRef, className: 'resume-section' },
+      { ref: blogsRef, className: 'blogs-section' },
+      { ref: certificatesRef, className: 'certificates-section' },
+      { ref: contactRef, className: 'contact-section' }
+    ];
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    };
+    
+    const observers: IntersectionObserver[] = [];
+    
+    sectionRefs.forEach(({ ref, className }) => {
+      if (!ref.current) return;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-animated');
+          }
+        });
+      }, observerOptions);
+      
+      observer.observe(ref.current);
+      observers.push(observer);
+    });
+    
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, []);
+
   return (
     <div className="relative">
       <ScrollIndicator />
       <Header />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Resume />
-        <Blogs />
-        <Certificates />
-        <Contact />
+        
+        <div ref={aboutRef as React.RefObject<HTMLDivElement>} className="section-fade">
+          <About />
+        </div>
+        
+        <div ref={skillsRef as React.RefObject<HTMLDivElement>} className="section-slide-right">
+          <Skills />
+        </div>
+        
+        <div ref={projectsRef as React.RefObject<HTMLDivElement>} className="section-scale">
+          <Projects />
+        </div>
+        
+        <div ref={resumeRef as React.RefObject<HTMLDivElement>} className="section-slide-left">
+          <Resume />
+        </div>
+        
+        <div ref={blogsRef as React.RefObject<HTMLDivElement>} className="section-fade">
+          <Blogs />
+        </div>
+        
+        <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="section-slide-right">
+          <Certificates />
+        </div>
+        
+        <div ref={contactRef as React.RefObject<HTMLDivElement>} className="section-scale">
+          <Contact />
+        </div>
       </main>
       <Footer />
+      
+      <style jsx global>{`
+        .section-fade, 
+        .section-slide-right, 
+        .section-slide-left, 
+        .section-scale {
+          opacity: 0;
+          transition: all 0.8s ease-out;
+        }
+        
+        .section-fade {
+          transform: translateY(50px);
+        }
+        
+        .section-slide-right {
+          transform: translateX(-50px);
+        }
+        
+        .section-slide-left {
+          transform: translateX(50px);
+        }
+        
+        .section-scale {
+          transform: scale(0.9);
+        }
+        
+        .section-fade.section-animated,
+        .section-slide-right.section-animated,
+        .section-slide-left.section-animated,
+        .section-scale.section-animated {
+          opacity: 1;
+          transform: translate(0) scale(1);
+        }
+      `}</style>
     </div>
   );
 };

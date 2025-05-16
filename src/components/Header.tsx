@@ -1,11 +1,11 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [nameAnimated, setNameAnimated] = useState(false);
+  const nameRef = useRef<HTMLSpanElement>(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +15,34 @@ const Header = () => {
     
     window.addEventListener('scroll', handleScroll);
     
-    // Start name animation once after component mounts
-    setTimeout(() => {
-      setNameAnimated(true);
-    }, 500);
+    // Start name animation
+    const animateLetters = () => {
+      const nameElement = nameRef.current;
+      if (!nameElement) return;
+      
+      const text = nameElement.textContent || '';
+      nameElement.textContent = '';
+      
+      text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.display = 'inline-block';
+        span.style.opacity = '0';
+        span.style.transform = 'translateY(-20px)';
+        span.style.transition = `opacity 0.3s ease, transform 0.3s ease`;
+        span.style.transitionDelay = `${i * 0.05}s`;
+        
+        nameElement.appendChild(span);
+        
+        // Trigger animation
+        setTimeout(() => {
+          span.style.opacity = '1';
+          span.style.transform = 'translateY(0)';
+        }, 10);
+      });
+    };
+    
+    animateLetters();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -75,7 +99,9 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2">
-            <span className={`text-3xl md:text-4xl ${nameAnimated ? 'animate-name-glow' : ''}`}>Venkat</span>
+            <span ref={nameRef} className="text-3xl md:text-4xl navbar-name-animation">
+              Venkat
+            </span>
           </a>
           
           {/* Desktop Navigation */}
