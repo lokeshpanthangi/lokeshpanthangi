@@ -1,19 +1,18 @@
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [nameAnimationComplete, setNameAnimationComplete] = useState(false);
-  const nameRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Check session storage to see if the animation has already been shown
-    const animationShown = sessionStorage.getItem('heroAnimationShown');
+    // Check local storage to see if the animation has already been shown
+    const animationShown = localStorage.getItem('nameAnimationShown');
     
     if (!animationShown) {
       // If animation hasn't been shown, mark it as complete after timeout
       const timer = setTimeout(() => {
         setNameAnimationComplete(true);
-        sessionStorage.setItem('heroAnimationShown', 'true');
+        localStorage.setItem('nameAnimationShown', 'true');
       }, 3000); // 3 seconds for animation
       
       return () => clearTimeout(timer);
@@ -22,24 +21,6 @@ const Hero = () => {
       setNameAnimationComplete(true);
     }
   }, []);
-
-  // Animated name effect
-  useEffect(() => {
-    if (nameAnimationComplete && nameRef.current) {
-      // Apply individual letter animation after main animation completes
-      const nameElement = nameRef.current;
-      const text = nameElement.textContent || '';
-      nameElement.innerHTML = '';
-      
-      text.split('').forEach((char, i) => {
-        const span = document.createElement('span');
-        span.textContent = char;
-        span.className = 'hero-name-letter inline-block';
-        span.style.animationDelay = `${i * 0.1}s`;
-        nameElement.appendChild(span);
-      });
-    }
-  }, [nameAnimationComplete]);
 
   // Simple parallax effect
   useEffect(() => {
@@ -93,7 +74,7 @@ const Hero = () => {
                 <span className="text-primary inline-block animate-text-reveal">Venkat</span>
               </div>
             ) : (
-              <span ref={nameRef} className="text-primary inline-block hero-name">Venkat</span>
+              <span className="text-primary inline-block">Venkat</span>
             )}
           </h1>
           

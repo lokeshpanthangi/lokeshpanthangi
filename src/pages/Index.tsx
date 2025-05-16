@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -13,15 +13,6 @@ import Footer from '@/components/Footer';
 import ScrollIndicator from '@/components/ScrollIndicator';
 
 const Index = () => {
-  // Refs for all sections to apply scroll animations
-  const aboutRef = useRef<HTMLElement>(null);
-  const skillsRef = useRef<HTMLElement>(null);
-  const projectsRef = useRef<HTMLElement>(null);
-  const resumeRef = useRef<HTMLElement>(null);
-  const blogsRef = useRef<HTMLElement>(null);
-  const certificatesRef = useRef<HTMLElement>(null);
-  const contactRef = useRef<HTMLElement>(null);
-  
   // Smooth scroll behavior
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
@@ -85,119 +76,21 @@ const Index = () => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  // Set up intersection observers for scroll animations with improved thresholds and timing
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -10% 0px'
-    };
-    
-    const observers: IntersectionObserver[] = [];
-    
-    // Create enhanced animation observer
-    const createObserver = (element: Element, animationClass: string) => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Add a slight delay for more natural feeling
-            setTimeout(() => {
-              entry.target.classList.add('section-animated');
-            }, 100);
-          }
-        });
-      }, observerOptions);
-      
-      observer.observe(element);
-      observers.push(observer);
-    };
-    
-    // Apply animations to each section
-    if (aboutRef.current) createObserver(aboutRef.current, 'section-fade');
-    if (skillsRef.current) createObserver(skillsRef.current, 'section-slide-right');
-    if (projectsRef.current) createObserver(projectsRef.current, 'section-scale');
-    if (resumeRef.current) createObserver(resumeRef.current, 'section-slide-left');
-    if (blogsRef.current) createObserver(blogsRef.current, 'section-fade');
-    if (certificatesRef.current) createObserver(certificatesRef.current, 'section-slide-right');
-    if (contactRef.current) createObserver(contactRef.current, 'section-scale');
-    
-    return () => {
-      observers.forEach(observer => observer.disconnect());
-    };
-  }, []);
-
-  // Inline styles for animations to fix TypeScript error
-  const animationStyles = `
-    .section-fade, 
-    .section-slide-right, 
-    .section-slide-left, 
-    .section-scale {
-      opacity: 0;
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .section-fade {
-      transform: translateY(50px);
-    }
-    
-    .section-slide-right {
-      transform: translateX(-50px);
-    }
-    
-    .section-slide-left {
-      transform: translateX(50px);
-    }
-    
-    .section-scale {
-      transform: scale(0.9);
-    }
-    
-    .section-fade.section-animated,
-    .section-slide-right.section-animated,
-    .section-slide-left.section-animated,
-    .section-scale.section-animated {
-      opacity: 1;
-      transform: translate(0) scale(1);
-    }
-  `;
-
   return (
     <div className="relative">
       <ScrollIndicator />
       <Header />
       <main>
         <Hero />
-        
-        <div ref={aboutRef as React.RefObject<HTMLDivElement>} className="section-fade">
-          <About />
-        </div>
-        
-        <div ref={skillsRef as React.RefObject<HTMLDivElement>} className="section-slide-right">
-          <Skills />
-        </div>
-        
-        <div ref={projectsRef as React.RefObject<HTMLDivElement>} className="section-scale">
-          <Projects />
-        </div>
-        
-        <div ref={resumeRef as React.RefObject<HTMLDivElement>} className="section-slide-left">
-          <Resume />
-        </div>
-        
-        <div ref={blogsRef as React.RefObject<HTMLDivElement>} className="section-fade">
-          <Blogs />
-        </div>
-        
-        <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="section-slide-right">
-          <Certificates />
-        </div>
-        
-        <div ref={contactRef as React.RefObject<HTMLDivElement>} className="section-scale">
-          <Contact />
-        </div>
+        <About />
+        <Skills />
+        <Projects />
+        <Resume />
+        <Blogs />
+        <Certificates />
+        <Contact />
       </main>
       <Footer />
-      
-      <style>{animationStyles}</style>
     </div>
   );
 };

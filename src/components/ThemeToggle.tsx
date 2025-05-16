@@ -29,51 +29,21 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="theme-toggle-btn relative w-14 h-7 rounded-full shadow-inner transition-all duration-500 p-1 overflow-hidden"
+      className="theme-toggle-btn relative w-14 h-7 rounded-full bg-gradient-to-r from-blue-200 to-blue-400 dark:from-indigo-900 dark:to-purple-900 shadow-inner transition-all duration-500 p-1"
       aria-label="Toggle dark mode"
     >
-      <div className="absolute inset-0 theme-toggle-background"></div>
-      
       <div 
-        className={`absolute top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full shadow-lg z-10 transition-all duration-500 theme-toggle-icon ${
+        className={`absolute top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full shadow transition-all duration-500 ${
           theme === 'dark' 
             ? 'right-1 bg-indigo-800 text-yellow-200' 
             : 'left-1 bg-yellow-300 text-amber-800'
         }`}
       >
         {theme === 'dark' ? (
-          <Moon className="w-4 h-4" />
+          <Moon className="w-4 h-4 animate-pulse" />
         ) : (
-          <Sun className="w-4 h-4" />
+          <Sun className="w-4 h-4 animate-spin-slow" />
         )}
-      </div>
-      
-      {/* Background stars in dark mode */}
-      <div className={`stars-container ${theme === 'dark' ? 'opacity-100' : 'opacity-0'}`}>
-        {[...Array(8)].map((_, i) => (
-          <span 
-            key={i} 
-            className="star"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 2 + 1}px`,
-              height: `${Math.random() * 2 + 1}px`,
-              animationDelay: `${Math.random() * 2}s`
-            }}
-          ></span>
-        ))}
-      </div>
-      
-      {/* Sun rays in light mode */}
-      <div className={`sun-rays ${theme === 'light' ? 'opacity-100' : 'opacity-0'}`}>
-        {[...Array(8)].map((_, i) => (
-          <span 
-            key={i} 
-            className="sun-ray" 
-            style={{ transform: `rotate(${i * 45}deg)` }}
-          ></span>
-        ))}
       </div>
     </button>
   );

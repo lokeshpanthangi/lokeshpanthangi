@@ -1,12 +1,11 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const nameRef = useRef<HTMLSpanElement>(null);
-  const [animationDone, setAnimationDone] = useState(false);
+  const [nameAnimated, setNameAnimated] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -16,47 +15,10 @@ const Header = () => {
     
     window.addEventListener('scroll', handleScroll);
     
-    // Check if animation was already shown in this session
-    const animationShown = sessionStorage.getItem('navbarAnimationShown');
-    
-    if (!animationShown) {
-      // Start name animation only if not shown before
-      const nameElement = nameRef.current;
-      if (!nameElement) return;
-      
-      const text = nameElement.textContent || '';
-      nameElement.innerHTML = '';
-      
-      // Create letter spans
-      text.split('').forEach((char, i) => {
-        const span = document.createElement('span');
-        span.textContent = char;
-        span.style.display = 'inline-block';
-        span.style.opacity = '0';
-        span.style.transform = 'translateY(-20px)';
-        span.style.transition = `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
-        span.style.transitionDelay = `${i * 0.1}s`;
-        
-        nameElement.appendChild(span);
-      });
-      
-      // Trigger animation
-      setTimeout(() => {
-        const letterSpans = nameElement.querySelectorAll('span');
-        letterSpans.forEach(span => {
-          span.style.opacity = '1';
-          span.style.transform = 'translateY(0)';
-        });
-        
-        // Mark animation as shown
-        setTimeout(() => {
-          setAnimationDone(true);
-          sessionStorage.setItem('navbarAnimationShown', 'true');
-        }, text.length * 100 + 500);
-      }, 300);
-    } else {
-      setAnimationDone(true);
-    }
+    // Start name animation once after component mounts
+    setTimeout(() => {
+      setNameAnimated(true);
+    }, 500);
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -113,9 +75,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2">
-            <span ref={nameRef} className={`text-3xl md:text-4xl ${!animationDone ? 'navbar-name-animation' : ''}`}>
-              {animationDone ? 'Venkat' : 'Venkat'}
-            </span>
+            <span className={`text-3xl md:text-4xl ${nameAnimated ? 'animate-name-glow' : ''}`}>Venkat</span>
           </a>
           
           {/* Desktop Navigation */}
