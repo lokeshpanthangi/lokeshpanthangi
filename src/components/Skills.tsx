@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
+import { Award } from 'lucide-react';
 
 interface Skill {
   id: number;
@@ -38,20 +40,29 @@ const skillsData: Skill[] = [
   { id: 22, name: "Agile", category: "Methodology" },
   { id: 23, name: "JIRA", category: "Tools" },
   { id: 24, name: "Python", category: "Languages" },
+  // Cloud
+  { id: 25, name: "AWS EC2", category: "Cloud" },
+  { id: 26, name: "AWS S3", category: "Cloud" },
+  { id: 27, name: "AWS Lambda", category: "Cloud" },
+  { id: 28, name: "Google Cloud", category: "Cloud" },
+  { id: 29, name: "Azure", category: "Cloud" },
+  { id: 30, name: "Kubernetes", category: "Cloud" },
 ];
 
 const Skills = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const categories = Array.from(new Set(skillsData.map(skill => skill.category)));
   
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          const skills = entries[0].target.querySelectorAll('.skill-button');
-          skills.forEach((skill, index) => {
+          const categoryButtons = entries[0].target.querySelectorAll('.category-button');
+          categoryButtons.forEach((button, index) => {
             setTimeout(() => {
-              (skill as HTMLElement).classList.add('opacity-100');
-              (skill as HTMLElement).classList.remove('opacity-0', 'translate-y-4');
+              (button as HTMLElement).classList.add('opacity-100');
+              (button as HTMLElement).classList.remove('opacity-0', 'translate-y-4');
             }, 50 * index);
           });
         }
@@ -64,36 +75,56 @@ const Skills = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Group skills by category
-  const groupedSkills: Record<string, Skill[]> = skillsData.reduce((groups, skill) => {
-    if (!groups[skill.category]) {
-      groups[skill.category] = [];
+  // If no category is selected, show all skills initially
+  useEffect(() => {
+    if (!activeCategory && categories.length > 0) {
+      setActiveCategory(categories[0]);
     }
-    groups[skill.category].push(skill);
-    return groups;
-  }, {} as Record<string, Skill[]>);
+  }, [categories]);
+
+  const handleCategoryClick = (category: string) => {
+    setActiveCategory(category);
+  };
+
+  const filteredSkills = activeCategory 
+    ? skillsData.filter(skill => skill.category === activeCategory)
+    : skillsData;
 
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-dark/95">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-title">My Skills</h2>
         
-        <div ref={skillsRef} className="mt-12 space-y-8">
-          {Object.entries(groupedSkills).map(([category, skills]) => (
-            <div key={category} className="mb-8">
-              <h3 className="text-xl font-bold mb-4 text-primary">{category}</h3>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <button
-                    key={skill.id}
-                    className="skill-button bg-white dark:bg-dark/80 px-5 py-3 rounded-lg text-lg font-medium opacity-0 translate-y-4 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 transform hover:-translate-y-1 focus:outline-none"
-                  >
-                    {skill.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div ref={skillsRef} className="mt-12">
+          {/* Category tabs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategoryClick(category)}
+                className={`category-button px-6 py-3 rounded-lg text-lg font-medium opacity-0 translate-y-4 transition-all duration-300 
+                  ${activeCategory === category 
+                    ? 'bg-primary text-white shadow-lg shadow-primary/30' 
+                    : 'bg-white dark:bg-dark/80 hover:shadow-md'}`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          
+          {/* Skills buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            {filteredSkills.map((skill) => (
+              <button
+                key={skill.id}
+                className="skill-button bg-white dark:bg-dark/80 px-5 py-3 rounded-lg text-lg font-medium 
+                  transition-all duration-300 hover:shadow-lg hover:shadow-blue-400/60 
+                  transform hover:-translate-y-1 focus:outline-none animate-appear"
+              >
+                {skill.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>

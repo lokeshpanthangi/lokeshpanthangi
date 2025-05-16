@@ -112,6 +112,22 @@ export default {
 						opacity: "1",
 						transform: "translateY(0)" 
 					}
+				},
+				"text-reveal": {
+					"0%": {
+						transform: "scale(0.5)",
+						opacity: "0",
+						filter: "blur(10px)"
+					},
+					"50%": {
+						opacity: "0.5",
+						filter: "blur(5px)"  
+					},
+					"100%": {
+						transform: "scale(1)",
+						opacity: "1",
+						filter: "blur(0)"
+					}
 				}
 			},
 			animation: {
@@ -122,17 +138,21 @@ export default {
 				"morph": "morph 8s ease-in-out infinite",
 				"ripple": "ripple 0.6s linear",
 				"appear": "appear 0.8s ease-out forwards",
+				"text-reveal": "text-reveal 2.5s cubic-bezier(0.23, 1, 0.32, 1) forwards"
 			},
 			fontFamily: {
 				'poppins': ['"Poppins"', 'sans-serif'],
 				'inter': ['"Inter"', 'sans-serif'],
 				'space': ['"Space Mono"', 'monospace']
-			}
+			},
+			transformStyle: {
+				'preserve-3d': 'preserve-3d',
+			},
 		}
 	},
 	plugins: [
 		require("tailwindcss-animate"),
-		function({ addUtilities, theme }: any) {
+		function({ addUtilities }: any) {
 			const newUtilities = {
 				'.perspective-1000': {
 					perspective: '1000px'
@@ -145,3 +165,4 @@ export default {
 		}
 	],
 } satisfies Config;
+

@@ -23,10 +23,9 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Education', href: '#education' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Resume', href: '#resume' },
-    { name: 'Hackathons', href: '#hackathons' },
     { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -68,7 +67,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2">
-            <span className="text-3xl md:text-4xl">Portfolio</span>
+            <span className="text-3xl md:text-4xl">Venkat</span>
           </a>
           
           {/* Desktop Navigation */}

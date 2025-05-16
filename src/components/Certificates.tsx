@@ -1,13 +1,12 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { Badge } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 interface Certificate {
   id: number;
   name: string;
   issuer: string;
   date: string;
-  image: string;
   credential?: string;
 }
 
@@ -17,7 +16,6 @@ const certificatesData: Certificate[] = [
     name: "Full Stack Web Development",
     issuer: "Example Academy",
     date: "December 2023",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800",
     credential: "CERT-123456"
   },
   {
@@ -25,7 +23,6 @@ const certificatesData: Certificate[] = [
     name: "Machine Learning Specialization",
     issuer: "Tech University",
     date: "March 2023",
-    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800",
     credential: "ML-789012"
   },
   {
@@ -33,7 +30,6 @@ const certificatesData: Certificate[] = [
     name: "UI/UX Design Fundamentals",
     issuer: "Design Institute",
     date: "August 2022",
-    image: "https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=80&w=800",
     credential: "DESIGN-345678"
   },
   {
@@ -41,7 +37,6 @@ const certificatesData: Certificate[] = [
     name: "Cloud Computing Certification",
     issuer: "Cloud Platform",
     date: "January 2022",
-    image: "https://images.unsplash.com/photo-1612085781750-2bd3103bb95a?q=80&w=800",
     credential: "CLOUD-901234"
   },
   {
@@ -49,7 +44,6 @@ const certificatesData: Certificate[] = [
     name: "Agile Project Management",
     issuer: "Project Management Institute",
     date: "October 2021",
-    image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=800",
     credential: "APM-567890"
   },
   {
@@ -57,7 +51,6 @@ const certificatesData: Certificate[] = [
     name: "Data Science with Python",
     issuer: "Data Academy",
     date: "July 2021",
-    image: "https://images.unsplash.com/photo-1608303588026-884930af2559?q=80&w=800",
     credential: "DS-123456"
   }
 ];
@@ -116,21 +109,25 @@ const Certificates = () => {
               className="certificate-card opacity-0 translate-y-10 transition-all duration-700"
               onClick={() => openModal(certificate)}
             >
-              <div className="relative h-64 group overflow-hidden rounded-lg">
-                {/* Badge Icon on Top Right */}
-                <div className="absolute top-3 right-3 z-10 bg-white dark:bg-dark/90 p-2 rounded-full shadow-md">
-                  <Badge className="text-primary w-5 h-5" />
+              <div className="relative h-48 group overflow-hidden rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6">
+                {/* Award Icon on Top Right with Animation */}
+                <div className="absolute top-3 right-3 z-10">
+                  <div className="bg-white dark:bg-dark/90 p-3 rounded-full shadow-md animate-pulse-glow">
+                    <Award className="text-primary w-6 h-6 animate-float" />
+                  </div>
                 </div>
                 
-                <img
-                  src={certificate.image}
-                  alt={certificate.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 text-white">
-                  <h3 className="text-lg font-bold mb-1">{certificate.name}</h3>
-                  <p className="text-white/90">{certificate.issuer}</p>
-                  <p className="text-white/70 text-sm">{certificate.date}</p>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{certificate.name}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{certificate.issuer}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{certificate.date}</p>
+                    {certificate.credential && (
+                      <p className="text-xs font-mono mt-1 text-gray-500 dark:text-gray-500">ID: {certificate.credential}</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -144,9 +141,9 @@ const Certificates = () => {
         <div className="modal-content">
           {selectedCertificate && (
             <div>
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex items-center gap-2">
-                  <Badge className="text-primary w-5 h-5" />
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex items-center gap-3">
+                  <Award className="text-primary w-8 h-8 animate-float" />
                   <h3 className="text-2xl font-bold">{selectedCertificate.name}</h3>
                 </div>
                 <button 
@@ -159,15 +156,7 @@ const Certificates = () => {
                 </button>
               </div>
               
-              <div className="mb-6 rounded-lg overflow-hidden h-64 md:h-80">
-                <img 
-                  src={selectedCertificate.image} 
-                  alt={selectedCertificate.name} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-gray-600 dark:text-gray-400">Issued By</h4>
                   <p className="text-lg">{selectedCertificate.issuer}</p>

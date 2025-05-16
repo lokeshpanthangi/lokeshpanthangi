@@ -1,7 +1,27 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [nameAnimationComplete, setNameAnimationComplete] = useState(false);
+
+  useEffect(() => {
+    // Check local storage to see if the animation has already been shown
+    const animationShown = localStorage.getItem('nameAnimationShown');
+    
+    if (!animationShown) {
+      // If animation hasn't been shown, mark it as complete after timeout
+      const timer = setTimeout(() => {
+        setNameAnimationComplete(true);
+        localStorage.setItem('nameAnimationShown', 'true');
+      }, 3000); // 3 seconds for animation
+      
+      return () => clearTimeout(timer);
+    } else {
+      // If animation has been shown before, skip it
+      setNameAnimationComplete(true);
+    }
+  }, []);
+
   // Simple parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -49,7 +69,13 @@ const Hero = () => {
         <div className="text-center">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-white">
             <span className="block">Hi, I'm</span>
-            <span className="text-primary inline-block animate-float">Your Name</span>
+            {!nameAnimationComplete ? (
+              <div className="h-20 mt-4">
+                <span className="text-primary inline-block animate-text-reveal">Venkat</span>
+              </div>
+            ) : (
+              <span className="text-primary inline-block">Venkat</span>
+            )}
           </h1>
           
           <div className="overflow-hidden h-20 my-4">
@@ -65,26 +91,6 @@ const Hero = () => {
             <a 
               href="#projects" 
               className="btn-custom bg-primary"
-              onClick={(e) => {
-                const button = e.currentTarget;
-                const circle = document.createElement('span');
-                const diameter = Math.max(button.clientWidth, button.clientHeight);
-                const radius = diameter / 2;
-                
-                const rect = button.getBoundingClientRect();
-                
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${e.clientX - rect.left - radius}px`;
-                circle.style.top = `${e.clientY - rect.top - radius}px`;
-                circle.classList.add('ripple');
-                
-                const ripple = button.getElementsByClassName('ripple')[0];
-                if (ripple) {
-                  ripple.remove();
-                }
-                
-                button.appendChild(circle);
-              }}
             >
               View My Projects
             </a>

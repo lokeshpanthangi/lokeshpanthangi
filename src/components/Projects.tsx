@@ -103,7 +103,9 @@ const Projects = () => {
               className="project-card opacity-0 translate-y-10 transition-all duration-500 cursor-pointer"
               onClick={() => openModal(project)}
             >
-              <div className="card-3d bg-white dark:bg-dark/80 shadow-lg rounded-xl overflow-hidden h-full">
+              <div className="project-card-inner bg-white dark:bg-dark/80 rounded-xl overflow-hidden h-full
+                hover:shadow-[0_0_25px_rgba(58,134,255,0.6)] transition-all duration-300 transform hover:-translate-y-3
+                hover:scale-105">
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={project.image} 
@@ -111,9 +113,9 @@ const Projects = () => {
                     className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-2">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1 mt-3">

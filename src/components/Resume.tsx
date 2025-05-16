@@ -27,7 +27,7 @@ const Resume = () => {
           <div className="bg-gray-50 dark:bg-gray-900 p-6 md:p-10 rounded-xl shadow-md">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold">Your Name</h3>
+                <h3 className="text-2xl md:text-3xl font-bold">Venkat</h3>
                 <p className="text-gray-600 dark:text-gray-300">Full Stack Developer</p>
               </div>
               
