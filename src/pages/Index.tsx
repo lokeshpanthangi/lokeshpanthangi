@@ -161,7 +161,7 @@ const Index = () => {
       </main>
       <Footer />
       
-      <style jsx global>{`
+      <style>{`
         .section-fade, 
         .section-slide-right, 
         .section-slide-left, 
