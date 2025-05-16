@@ -5,6 +5,7 @@ import { ThemeToggle } from './ThemeToggle';
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [nameAnimated, setNameAnimated] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +14,12 @@ const Header = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
+    
+    // Start name animation once after component mounts
+    setTimeout(() => {
+      setNameAnimated(true);
+    }, 500);
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -67,7 +74,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2">
-            <span className="text-3xl md:text-4xl">Venkat</span>
+            <span className={`text-3xl md:text-4xl ${nameAnimated ? 'animate-text-reveal' : ''}`}>Venkat</span>
           </a>
           
           {/* Desktop Navigation */}

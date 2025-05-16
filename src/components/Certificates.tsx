@@ -110,10 +110,10 @@ const Certificates = () => {
               onClick={() => openModal(certificate)}
             >
               <div className="relative h-48 group overflow-hidden rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6">
-                {/* Award Icon on Top Right with Animation */}
+                {/* Award Icon with Enhanced Animation */}
                 <div className="absolute top-3 right-3 z-10">
-                  <div className="bg-white dark:bg-dark/90 p-3 rounded-full shadow-md animate-pulse-glow">
-                    <Award className="text-primary w-6 h-6 animate-float" />
+                  <div className="award-icon-container">
+                    <Award className="award-icon text-primary w-6 h-6" />
                   </div>
                 </div>
                 
@@ -143,7 +143,9 @@ const Certificates = () => {
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center gap-3">
-                  <Award className="text-primary w-8 h-8 animate-float" />
+                  <div className="award-icon-container-large">
+                    <Award className="award-icon text-primary w-8 h-8" />
+                  </div>
                   <h3 className="text-2xl font-bold">{selectedCertificate.name}</h3>
                 </div>
                 <button 

@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
+import { Linkedin, Mail, Github } from 'lucide-react';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -52,9 +53,7 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="bg-primary/10 p-3 rounded-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="text-lg font-medium mb-1">Email</h4>
@@ -96,22 +95,31 @@ const Contact = () => {
               <div className="mt-10">
                 <h4 className="text-lg font-medium mb-3">Connect With Me</h4>
                 <div className="flex space-x-4">
-                  {["github", "linkedin", "twitter", "instagram"].map((platform) => (
-                    <a 
-                      key={platform}
-                      href={`https://${platform}.com`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
-                    >
-                      <span className="text-xl">
-                        {platform === "github" && "🐱"}
-                        {platform === "linkedin" && "🔗"}
-                        {platform === "twitter" && "🐦"}
-                        {platform === "instagram" && "📸"}
-                      </span>
-                    </a>
-                  ))}
+                  <a 
+                    href="https://github.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                  </a>
+                  <a 
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                  </a>
+                  <a 
+                    href="mailto:example@example.com"
+                    className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-110"
+                    aria-label="Email"
+                  >
+                    <Mail className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+                  </a>
                 </div>
               </div>
             </div>

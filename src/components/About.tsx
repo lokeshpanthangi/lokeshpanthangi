@@ -52,7 +52,7 @@ const About = () => {
             className="transition-all duration-1000 delay-300 opacity-0 translate-y-10"
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-              Hello, I'm <span className="text-secondary">Your Name</span>
+              Hello, I'm <span className="text-secondary">Venkat</span>
             </h3>
             
             <p className="mb-4 text-lg">
@@ -64,17 +64,6 @@ const About = () => {
               My journey in technology started several years ago, and since then I've been continuously learning and improving my skills. 
               I believe in creating solutions that not only work well but also provide an excellent user experience.
             </p>
-            
-            <div className="mb-8">
-              <h4 className="text-xl font-semibold mb-4">My Skills</h4>
-              <div className="flex flex-wrap">
-                {["JavaScript", "React", "Node.js", "TypeScript", "HTML/CSS", "Python", "MongoDB", "UI/UX Design", "Git", "AWS"].map((skill) => (
-                  <span key={skill} className="skill-tag">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
             
             <div>
               <a href="#contact" className="btn-custom inline-block bg-primary">

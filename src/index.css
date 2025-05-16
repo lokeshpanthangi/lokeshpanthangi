@@ -137,7 +137,9 @@
   }
 
   .card-3d {
-    @apply transition-all duration-300 hover:shadow-xl transform perspective-1000 preserve-3d;
+    @apply transition-all duration-300 hover:shadow-xl transform;
+    perspective: 1000px;
+    transform-style: preserve-3d;
   }
 
   .card-3d:hover {
@@ -172,6 +174,21 @@
   .modal-open .modal-content {
     @apply opacity-100 scale-100;
   }
+  
+  /* Award icon animation */
+  .award-icon-container {
+    @apply bg-white dark:bg-dark/90 p-3 rounded-full shadow-md flex items-center justify-center;
+    animation: pulse-glow 2s ease-in-out infinite, spin 8s linear infinite;
+  }
+  
+  .award-icon-container-large {
+    @apply bg-white dark:bg-dark/90 p-4 rounded-full shadow-md flex items-center justify-center;
+    animation: pulse-glow 2s ease-in-out infinite, spin 8s linear infinite;
+  }
+  
+  .award-icon {
+    animation: float 3s ease-in-out infinite alternate;
+  }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
@@ -203,11 +220,12 @@
 
 .certificate-card:hover {
   transform: perspective(1000px) rotateY(5deg) scale(1.03);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
 }
 
 /* 3D Carousel for projects */
 .carousel-3d {
-  @apply perspective-1000;
+  perspective: 1000px;
   transform-style: preserve-3d;
 }
 
@@ -237,6 +255,37 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(58, 134, 255, 0.2);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(58, 134, 255, 0.6);
+  }
+}
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
