@@ -97,7 +97,7 @@ const Blogs = () => {
   };
 
   return (
-    <section id="blogs" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-dark/95 dark:to-dark/90">
+    <section id="blogs" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center relative">

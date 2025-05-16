@@ -96,7 +96,7 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-20 bg-white dark:bg-dark">
+    <section id="certificates" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-title">Certificates</h2>
         

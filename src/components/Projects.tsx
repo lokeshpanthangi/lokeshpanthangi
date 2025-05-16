@@ -132,7 +132,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden project-section">
+    <section id="projects" className="py-20 relative overflow-hidden bg-white dark:bg-gray-900">
       <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
@@ -226,12 +226,12 @@ const Projects = () => {
         
         {filteredProjects.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-xl text-gray-500 dark:text-gray-400">No projects found with the selected filter.</p>
+            <p className="text-xl text-gray-500 dark:text-gray-400">No projects found.</p>
             <button 
-              onClick={() => setActiveCategory('all')}
+              onClick={() => window.location.reload()}
               className="mt-4 px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/80 transition-colors"
             >
-              View All Projects
+              Refresh Page
             </button>
           </div>
         )}

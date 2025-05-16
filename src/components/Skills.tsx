@@ -88,7 +88,7 @@ const Skills = () => {
     : skillsData;
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-dark/95">
+    <section id="skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-title">My Skills</h2>
         
