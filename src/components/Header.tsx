@@ -1,13 +1,9 @@
-
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [nameAnimated, setNameAnimated] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const nameRef = useRef<HTMLSpanElement>(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -16,26 +12,6 @@ const Header = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Check if animation has been played before in this session
-    const animationPlayed = sessionStorage.getItem('nameAnimationPlayed');
-    
-    if (!animationPlayed) {
-      // Start name animation once after component mounts
-      setTimeout(() => {
-        setNameAnimated(true);
-        // Mark animation as played for this session
-        sessionStorage.setItem('nameAnimationPlayed', 'true');
-        
-        // Set animation complete after animation duration
-        setTimeout(() => {
-          setAnimationComplete(true);
-        }, 2000); // Animation duration
-      }, 800);
-    } else {
-      // Skip animation if already played in this session
-      setAnimationComplete(true);
-    }
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -91,12 +67,9 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <a href="#home" className="text-2xl md:text-3xl font-bold text-primary flex items-center gap-2 overflow-hidden">
-            <span 
-              ref={nameRef}
-              className={`text-3xl md:text-4xl ${!animationComplete ? 'name-animation' : ''}`}
-            >
-              Venkat
+          <a href="#home" className="text-xl md:text-2xl font-bold text-primary flex items-center gap-2 -ml-2">
+            <span className={`text-2xl md:text-3xl transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
+              Lokesh
             </span>
           </a>
           

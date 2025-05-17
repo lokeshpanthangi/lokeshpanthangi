@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 
 interface Project {
@@ -16,38 +15,80 @@ interface Project {
 const projectsData: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-featured e-commerce platform built with React, Node.js, and MongoDB. Features include product listings, shopping cart, user authentication, and payment processing.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800",
-    github: "https://github.com",
-    demo: "https://demo.com",
+    title: "TaskPal",
+    description: `🚀 TaskPal: Ultimate Task & Project Management App\n\nTaskPal is a feature-rich task and project management app designed for individuals and teams, offering secure authentication, customizable user profiles, and theme switching. Users can create, organize, and manage tasks with labels, categories, dependencies, and recurring options. Projects feature dashboards, progress tracking, and team collaboration. The app includes a calendar view, productivity analytics, and real-time notifications. Built with React, TypeScript, and Tailwind CSS (frontend), and powered by Supabase for backend services, TaskPal supports JWT-based authentication, file storage, and real-time updates. It targets individuals, teams, freelancers, and students, providing flexible project management and planning. Future plans include mobile apps, advanced analytics, AI-powered assistance, and integrations with popular tools.`,
+    technologies: [
+      "React 18 with TypeScript",
+      "Tailwind CSS",
+      "Supabase (PostgreSQL, Auth, Storage, Realtime)",
+      "Vite (Build Tool)",
+      "Framer Motion (Animations)",
+      "React Query (State Management)"
+    ],
+    image: "/taskpal.jpg",
+    github: "https://github.com/lokeshpanthangi/taskpal-official",
+    demo: "https://taskpal-official.onrender.com",
     featured: true,
     color: "#3a86ff"
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A productivity app for managing tasks and projects with team collaboration features. Built with React and Firebase.",
-    technologies: ["React", "Firebase", "Material UI", "React DnD"],
-    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=800",
-    github: "https://github.com",
-    demo: "https://demo.com",
-    color: "#4cc9f0"
+    title: "EchoVoice",
+    description: `🌊 EchoVerse: Your Time Capsule for Voice Memories\n\nEchoVerse is a modern voice journaling app that lets users record audio messages as time capsules, set future unlock dates, and tag them with moods. It features a timeline view, mood tracking, user reflections, and responsive design for both desktop and mobile. Users can personalize their profiles and switch between dark and light themes. The app ensures data security with row-level security and secure authentication via Supabase. Built with a clean and intuitive UI, EchoVerse offers a seamless experience for capturing and revisiting voice memories.`,
+    technologies: [
+      "React",
+      "Supabase (PostgreSQL, Auth, Storage)",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Query"
+    ],
+    image: "/echovoice.jpg",
+    github: "https://github.com/lokeshpanthangi/EchoVoice-official",
+    demo: "https://echovoice-official.vercel.app/",
+    color: "#a259f7"
   },
   {
     id: 3,
-    title: "AI Image Generator",
-    description: "A web application that uses machine learning to generate unique images based on text prompts.",
-    technologies: ["Python", "TensorFlow", "React", "Flask"],
-    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=800",
-    github: "https://github.com",
-    demo: "https://demo.com",
-    featured: true,
-    color: "#f72585"
+    title: "WiseChoice",
+    description: `🌐 WiseChoice: Your Intelligent Shopping Companion\n\nWiseChoice is an AI-powered shopping assistant designed to help users make informed purchasing decisions. It analyzes product reviews to filter out fake ones, performs sentiment analysis, and offers a concise review summary. It also assesses price fairness by comparing prices across platforms and provides a product grade (S, A, B, C, D) based on quality and price. Users can interact with an AI chatbot for queries. Built with a robust backend and a modern frontend, WiseChoice offers a seamless shopping experience.`,
+    technologies: [
+      "Flask (Python)",
+      "Selenium (Web Scraping)",
+      "Transformers (NLP)",
+      "NLTK (Natural Language Processing)",
+      "Scipy",
+      "Next.js",
+      "React",
+      "Tailwind CSS"
+    ],
+    image: "/wisechoice.jpg",
+    github: "https://github.com/lokeshpanthangi/WiseChoice",
+    color: "#e0e0e0"
   },
   {
     id: 4,
+    title: "BookBurst",
+    description: `📚 BookBurst - Summary\n\nBookBurst is a modern web application for book enthusiasts, enabling users to track, discover, and share their reading journeys. Users can maintain a personal bookshelf, discover new books, connect with other readers, and view personalized reading statistics. The app features a clean, responsive design with dark mode support, allowing users to write private notes, share reviews, and explore their reading timeline.`,
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui (Radix UI)",
+      "React Query",
+      "Context API",
+      "Supabase (Auth, Database, Storage)",
+      "Vite",
+      "Netlify",
+      "Render"
+    ],
+    image: "/bookburst.jpg",
+    github: "https://github.com/lokeshpanthangi/BookBurst-Official",
+    demo: "https://bookburst-official.vercel.app/",
+    color: "#00f0ff"
+  },
+  {
+    id: 5,
     title: "Social Media Dashboard",
     description: "A comprehensive analytics dashboard for tracking social media performance across multiple platforms.",
     technologies: ["Vue.js", "D3.js", "Node.js", "Express"],

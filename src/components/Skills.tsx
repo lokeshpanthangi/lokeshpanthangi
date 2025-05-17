@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 
 interface Skill {
@@ -8,44 +7,35 @@ interface Skill {
 }
 
 const skillsData: Skill[] = [
-  // Frontend
-  { id: 1, name: "React", category: "Frontend" },
-  { id: 2, name: "JavaScript", category: "Frontend" },
-  { id: 3, name: "TypeScript", category: "Frontend" },
-  { id: 4, name: "HTML5", category: "Frontend" },
-  { id: 5, name: "CSS3", category: "Frontend" },
-  { id: 6, name: "Tailwind CSS", category: "Frontend" },
-  { id: 7, name: "Material UI", category: "Frontend" },
-  { id: 8, name: "Redux", category: "Frontend" },
-  
-  // Backend
-  { id: 9, name: "Node.js", category: "Backend" },
-  { id: 10, name: "Express", category: "Backend" },
-  { id: 11, name: "MongoDB", category: "Backend" },
-  { id: 12, name: "PostgreSQL", category: "Backend" },
-  { id: 13, name: "GraphQL", category: "Backend" },
-  { id: 14, name: "REST API", category: "Backend" },
-  
-  // DevOps & Tools
-  { id: 15, name: "Git", category: "Tools" },
-  { id: 16, name: "Docker", category: "DevOps" },
-  { id: 17, name: "AWS", category: "Cloud" },
-  { id: 18, name: "CI/CD", category: "DevOps" },
-  { id: 19, name: "Jest", category: "Testing" },
-  { id: 20, name: "Webpack", category: "Tools" },
-  
-  // Other
-  { id: 21, name: "Figma", category: "Design" },
-  { id: 22, name: "Agile", category: "Methodology" },
-  { id: 23, name: "JIRA", category: "Tools" },
-  { id: 24, name: "Python", category: "Languages" },
-  // Cloud
-  { id: 25, name: "AWS EC2", category: "Cloud" },
-  { id: 26, name: "AWS S3", category: "Cloud" },
-  { id: 27, name: "AWS Lambda", category: "Cloud" },
-  { id: 28, name: "Google Cloud", category: "Cloud" },
-  { id: 29, name: "Azure", category: "Cloud" },
-  { id: 30, name: "Kubernetes", category: "Cloud" },
+  // Programming Languages
+  { id: 1, name: "Python", category: "Programming Languages" },
+  { id: 2, name: "Java", category: "Programming Languages" },
+  { id: 3, name: "JavaScript", category: "Programming Languages" },
+  { id: 4, name: "HTML", category: "Programming Languages" },
+  { id: 5, name: "CSS", category: "Programming Languages" },
+  { id: 6, name: "R Programming", category: "Programming Languages" },
+
+  // Core CS
+  { id: 7, name: "Data Structures and Algorithms", category: "Core CS" },
+  { id: 8, name: "TCP/IP Networking", category: "Core CS" },
+  { id: 9, name: "Computer Networks", category: "Core CS" },
+  { id: 10, name: "Operating Systems (Linux/Unix, Windows)", category: "Core CS" },
+
+  // Web Frameworks
+  { id: 11, name: "Django", category: "Web Frameworks" },
+  { id: 12, name: "Streamlit", category: "Web Frameworks" },
+  { id: 13, name: "Flask (Basic Exposure)", category: "Web Frameworks" },
+
+  // Databases
+  { id: 14, name: "MySQL", category: "Databases" },
+  { id: 15, name: "SQL", category: "Databases" },
+  { id: 16, name: "Familiarity with NoSQL databases (MongoDB)", category: "Databases" },
+
+  // Machine Learning & AI
+  { id: 17, name: "Machine Learning", category: "Machine Learning & AI" },
+  { id: 18, name: "Deep Learning", category: "Machine Learning & AI" },
+  { id: 19, name: "Natural Language Processing", category: "Machine Learning & AI" },
+  { id: 20, name: "Generative AI (GenAI) Tools", category: "Machine Learning & AI" },
 ];
 
 const Skills = () => {

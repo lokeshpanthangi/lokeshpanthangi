@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { BookOpen, ArrowRight, Calendar, Clock, ExternalLink } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -17,12 +16,12 @@ interface Blog {
 const blogsData: Blog[] = [
   {
     id: 1,
-    title: "Understanding Modern Web Architecture",
-    summary: "A deep dive into modern web architecture patterns and best practices for scalable applications.",
-    date: "April 12, 2025",
-    url: "https://example.com/blog/web-architecture",
-    tags: ["Web Development", "Architecture", "React"],
-    readTime: "8 min read"
+    title: "Gen AI - The Man-Made Creator",
+    summary: "Have you ever stopped to wonder what it means when machines start to create alongside us? When algorithms begin to paint, write, and compose with an almost human-like touch? This post explores the dawn of generative AI, its impact on creativity, and what makes it different from traditional AI.",
+    date: "May 16, 2025",
+    url: "https://gencreator.blogspot.com/2025/05/thegencreator.html",
+    tags: ["Generative AI", "Creativity", "Technology", "AI"],
+    readTime: "7 min read"
   },
   {
     id: 2,

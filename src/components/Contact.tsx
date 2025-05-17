@@ -1,7 +1,7 @@
-
 import { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { Linkedin, Mail, Github } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -23,22 +23,34 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulating form submission
-    setTimeout(() => {
+
+    emailjs.send(
+      'service_fmpx1xn',
+      'template_roxzdsp',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      'Oe4jvFItr1PiWo17O'
+    )
+    .then(() => {
       setIsSubmitting(false);
       toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
+      setFormData({ name: '', email: '', message: '' });
+    })
+    .catch((error) => {
+      setIsSubmitting(false);
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Error",
+        description: "There was an error sending your message. Please try again later.",
+        variant: "destructive"
       });
-    }, 1500);
+    });
   };
   
   return (
@@ -47,7 +59,7 @@ const Contact = () => {
         <h2 className="section-title">Get In Touch</h2>
         
         <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="pl-4 md:pl-12 pt-8 md:pt-12">
+          <div className="pl-8 md:pl-32 pt-8 md:pt-12">
             <h3 className="text-2xl font-bold mb-6">Contact Info</h3>
             
             <div className="space-y-6">
@@ -57,8 +69,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-medium mb-1">Email</h4>
-                  <a href="mailto:example@example.com" className="text-primary hover:underline">
-                    example@example.com
+                  <a href="mailto:lokeshpantangi@gmail.com" className="text-primary hover:underline">
+                    lokeshpantangi@gmail.com
                   </a>
                 </div>
               </div>
@@ -71,8 +83,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-medium mb-1">Phone</h4>
-                  <a href="tel:+1234567890" className="text-primary hover:underline">
-                    +1 (234) 567-890
+                  <a href="tel:+919573580571" className="text-primary hover:underline">
+                    +91 9573580571
                   </a>
                 </div>
               </div>
@@ -87,7 +99,7 @@ const Contact = () => {
                 <div>
                   <h4 className="text-lg font-medium mb-1">Location</h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    San Francisco, CA
+                    Andhra Pradesh, India
                   </p>
                 </div>
               </div>
@@ -96,7 +108,7 @@ const Contact = () => {
                 <h4 className="text-lg font-medium mb-3">Connect With Me</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href="https://github.com" 
+                    href="https://github.com/lokeshpanthangi" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
@@ -105,7 +117,7 @@ const Contact = () => {
                     <Github className="h-6 w-6 text-gray-700 dark:text-gray-300" />
                   </a>
                   <a 
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/pvlokesh"
                     target="_blank"
                     rel="noopener noreferrer" 
                     className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
@@ -114,7 +126,7 @@ const Contact = () => {
                     <Linkedin className="h-6 w-6 text-gray-700 dark:text-gray-300" />
                   </a>
                   <a 
-                    href="mailto:example@example.com"
+                    href="mailto:lokeshpantangi@gmail.com"
                     className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
                     aria-label="Email"
                   >

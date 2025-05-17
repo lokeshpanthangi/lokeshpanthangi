@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 
 const Hero = () => {
@@ -67,21 +66,21 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-white">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
             <span className="inline-block">Hi, I'm</span>{' '}
             {!nameAnimationComplete ? (
-              <span className="text-primary inline-block animate-text-reveal">Venkat</span>
+              <span className="text-primary inline-block animate-text-reveal">Venkata Lokesh Panthangi</span>
             ) : (
-              <span className="text-primary inline-block">Venkat</span>
+              <span className="text-primary inline-block">Venkata Lokesh Panthangi</span>
             )}
           </h1>
           
-          <div className="overflow-hidden h-20 my-4">
+          <div className="overflow-hidden h-16 my-4">
             <div className="animate-float flex flex-col">
-              <p className="text-xl md:text-3xl font-light text-white py-5">Full Stack Developer</p>
-              <p className="text-xl md:text-3xl font-light text-white py-5">UI/UX Designer</p>
-              <p className="text-xl md:text-3xl font-light text-white py-5">Problem Solver</p>
-              <p className="text-xl md:text-3xl font-light text-white py-5">Full Stack Developer</p>
+              <p className="text-lg md:text-2xl font-light text-white py-3">AI & ML Engineer</p>
+              <p className="text-lg md:text-2xl font-light text-white py-3">Deep Learning Specialist</p>
+              <p className="text-lg md:text-2xl font-light text-white py-3">Data Scientist</p>
+              <p className="text-lg md:text-2xl font-light text-white py-3">AI & ML Engineer</p>
             </div>
           </div>
           

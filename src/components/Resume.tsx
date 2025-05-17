@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Download, Briefcase, GraduationCap, Code } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Resume = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,12 +22,12 @@ const Resume = () => {
   };
 
   const handleDownload = () => {
-    setIsLoading(true);
-    // Simulate download process
-    setTimeout(() => {
-      window.open('/resume.pdf', '_blank');
-      setIsLoading(false);
-    }, 1500);
+    const link = document.createElement('a');
+    link.href = '/Lokesh_Panthangi.pdf';
+    link.download = 'Lokesh_Panthangi.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -46,7 +47,7 @@ const Resume = () => {
           </p>
         </div>
 
-        <div ref={resumeRef} className="mt-12 max-w-4xl mx-auto">
+        <div ref={resumeRef} className="mt-12 max-w-6xl mx-auto">
           {/* Resume Header with Download Button */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-t-2xl shadow-lg border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-4">
@@ -54,10 +55,10 @@ const Resume = () => {
                 <span className="text-2xl font-bold">V</span>
               </div>
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-primary">Venkat</h3>
+                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-primary">Venkata Lokesh Panthangi</h3>
                 <p className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
                   <Code size={16} className="text-primary" />
-                  Full Stack Developer
+                  AI & ML Engineer
                 </p>
               </div>
             </div>
@@ -109,70 +110,43 @@ const Resume = () => {
               {/* Experience Tab */}
               {activeTab === 'experience' && (
                 <div className="space-y-6">
+                  {/* Brainovision Experience */}
                   <div className="resume-card group">
                     <div className="resume-card-timeline"></div>
                     <div className="resume-card-dot"></div>
                     <div className="resume-card-content">
-                      <div className="flex flex-col md:flex-row justify-between mb-2">
-                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Senior Frontend Developer</h4>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center">
-                          Jan 2020 - Present
-                        </span>
+                      <div className="flex flex-row justify-between items-center mb-1">
+                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Full Stack Developer</h4>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center ml-4">Jul 2024 – Jan 2025</span>
                       </div>
-                      <h5 className="text-primary mb-3 flex items-center gap-2">
-                        <Briefcase size={16} />
-                        TechCorp Inc.
-                      </h5>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4">
-                        Leading the frontend development team and architecting scalable web applications.
-                      </p>
-                      <ul className="space-y-2">
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>Developed and maintained multiple React applications with TypeScript</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>Implemented CI/CD pipelines and improved build performance by 40%</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>Mentored junior developers and conducted code reviews</span>
-                        </li>
+                      <div className="flex flex-row justify-between items-center mb-2">
+                        <span className="italic text-gray-800 dark:text-gray-200 font-normal">Brainovision</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Hyderabad</span>
+                      </div>
+                      <ul className="list-disc pl-5 space-y-2 mt-2 text-gray-600 dark:text-gray-300">
+                        <li>Developed a Django app for real-time monitoring and management of 50+ pressure pumps, achieving 89.8% uptime.</li>
+                        <li>Improved operational efficiency and reduced downtime by 18% using predictive maintenance.</li>
+                        <li>Automated notifications and reporting with Django Channels, reducing response times by 30%.</li>
                       </ul>
                     </div>
                   </div>
-                  
+                  {/* Zensar Technologies Experience */}
                   <div className="resume-card group">
                     <div className="resume-card-timeline"></div>
                     <div className="resume-card-dot"></div>
                     <div className="resume-card-content">
-                      <div className="flex flex-col md:flex-row justify-between mb-2">
-                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Frontend Developer</h4>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center">
-                          May 2018 - Dec 2019
-                        </span>
+                      <div className="flex flex-row justify-between items-center mb-1">
+                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Application Implementer</h4>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center ml-4">Jan 2025 – Apr 2025</span>
                       </div>
-                      <h5 className="text-primary mb-3 flex items-center gap-2">
-                        <Briefcase size={16} />
-                        Digital Innovations Inc.
-                      </h5>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4">
-                        Developed responsive web applications and collaborated with designers to implement UI/UX improvements.
-                      </p>
-                      <ul className="space-y-2">
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>Built responsive web interfaces using React, Redux, and modern CSS frameworks</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>Collaborated with UX designers to implement pixel-perfect designs and animations</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>Integrated RESTful APIs and implemented state management solutions</span>
-                        </li>
+                      <div className="flex flex-row justify-between items-center mb-2">
+                        <span className="italic text-gray-800 dark:text-gray-200 font-normal">Zensar Technologies</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Bangalore</span>
+                      </div>
+                      <ul className="list-disc pl-5 space-y-2 mt-2 text-gray-600 dark:text-gray-300">
+                        <li>Collaborated with cross-functional teams to deploy and configure enterprise applications, ensuring seamless integration with client systems.</li>
+                        <li>Provided technical support and training to end-users, improving adoption rates and reducing post-implementation issues.</li>
+                        <li>Customized application features based on client requirements, enhancing user experience and operational efficiency.</li>
                       </ul>
                     </div>
                   </div>
@@ -186,47 +160,29 @@ const Resume = () => {
                     <div className="resume-card-timeline"></div>
                     <div className="resume-card-dot"></div>
                     <div className="resume-card-content">
-                      <div className="flex flex-col md:flex-row justify-between mb-2">
-                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Master of Computer Science</h4>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center">
-                          2020 - 2022
-                        </span>
-                      </div>
-                      <h5 className="text-primary mb-3 flex items-center gap-2">
-                        <GraduationCap size={16} className="animate-bounce-slow" />
-                        Tech University
-                      </h5>
-                      <p className="text-gray-600 dark:text-gray-300 mb-2">
-                        Specialized in Advanced Software Engineering and Machine Learning
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full text-xs font-medium">GPA: 3.9/4.0</span>
-                        <span className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 rounded-full text-xs font-medium">Dean's List</span>
-                        <span className="px-3 py-1 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-300 rounded-full text-xs font-medium">Research Assistant</span>
+                      <div className="flex flex-col mb-2">
+                        <h5 className="text-primary mb-2 text-lg font-semibold">B.Tech in Computer Science Engineering - Artificial Intelligence and Machine Learning</h5>
+                        <div className="flex flex-row justify-between items-center">
+                          <span className="italic text-gray-800 dark:text-gray-200 font-normal">Vasireddy Venkatadri Institute of Technology</span>
+                          <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Guntur</span>
+                        </div>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">2021–2025</span>
                       </div>
                     </div>
                   </div>
-                  
+            
+                  {/* Intermediate - MPC Entry */}
                   <div className="resume-card group">
                     <div className="resume-card-timeline"></div>
                     <div className="resume-card-dot"></div>
                     <div className="resume-card-content">
-                      <div className="flex flex-col md:flex-row justify-between mb-2">
-                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Bachelor of Technology in Computer Science</h4>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center">
-                          2016 - 2020
-                        </span>
-                      </div>
-                      <h5 className="text-primary mb-3 flex items-center gap-2">
-                        <GraduationCap size={16} className="animate-bounce-slow" />
-                        Engineering Institute
-                      </h5>
-                      <p className="text-gray-600 dark:text-gray-300 mb-2">
-                        Focused on Web Development and Data Structures & Algorithms
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full text-xs font-medium">GPA: 3.8/4.0</span>
-                        <span className="px-3 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-300 rounded-full text-xs font-medium">Scholarship Recipient</span>
+                      <div className="flex flex-col mb-2">
+                        <h5 className="text-primary mb-2 text-lg font-semibold">Intermediate - MPC</h5>
+                        <div className="flex flex-row justify-between items-center">
+                          <span className="italic text-gray-800 dark:text-gray-200 font-normal">Nirmala Junior College</span>
+                          <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Guntur</span>
+                        </div>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">2019–2021</span>
                       </div>
                     </div>
                   </div>
