@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+# Lokesh's Portfolio
 
-## Project info
+A modern, animated, and fully responsive developer portfolio built with **Vite**, **React**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. Showcasing blogs, certificates, projects, and more with beautiful UI and smooth animations.
 
-**URL**: https://lovable.dev/projects/6c6438b3-351b-41a9-95af-798ab84231d7
+---
 
-## How can I edit this code?
+## ✨ Features
+- Animated and interactive UI (Framer Motion, shadcn/ui)
+- Blog section with real data and pop-up/full-article support
+- Certificate section with direct links to certificate proofs
+- Projects, skills, and more, all easily customizable
+- Dark mode support
+- Responsive design for all devices
+- Easy deployment (Vercel, Netlify, Render, etc.)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🚀 Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6c6438b3-351b-41a9-95af-798ab84231d7) and start prompting.
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Installation
+```bash
+git clone https://github.com/lokeshpanthangi/my-portfolio.git
+cd my-portfolio
+npm install
 ```
 
-**Edit a file directly in GitHub**
+### Development
+```bash
+npm run dev
+```
+Visit [http://localhost:5173](http://localhost:5173) to view your site.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+### Preview Production Build
+```bash
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🛠️ Customization
+- **Blogs:** Edit `src/components/Blogs.tsx` and `src/content/blog/` for your blog data and content.
+- **Certificates:** Edit `src/components/Certificates.tsx` to update certificate info and links.
+- **Projects:** Edit `src/components/Projects.tsx` for your project showcase.
+- **Footer:** Edit `src/components/Footer.tsx` for your name, animation, and social links.
+- **Theme & Styles:** Tweak `tailwind.config.ts` and use shadcn/ui components for rapid UI changes.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🌐 Deployment
+This project is ready for deployment on any static host (Vercel, Netlify, Render, etc.).
 
-## How can I deploy this project?
+**Deploy steps:**
+1. Push your code to GitHub.
+2. Connect your repo to your preferred platform (e.g., Vercel).
+3. Set the build command to `npm run build` and the output directory to `dist`.
+4. (Optional) Add environment variables as needed.
 
-Simply open [Lovable](https://lovable.dev/projects/6c6438b3-351b-41a9-95af-798ab84231d7) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 📁 Project Structure
+- `src/components/` – All React components (Blogs, Certificates, Footer, etc.)
+- `src/content/blog/` – Blog markdown files
+- `public/` – Static assets
+- `tailwind.config.ts` – Tailwind CSS configuration
+- `vite.config.ts` – Vite configuration
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+## 📄 License
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+**Lokesh Panthangi**
+- [GitHub](https://github.com/lokeshpanthangi)
+- [LinkedIn](https://linkedin.com/in/lokeshpanthangi)
+- [Twitter](https://twitter.com/lokeshpanthangi)
