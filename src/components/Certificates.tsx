@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Award } from 'lucide-react';
 
@@ -8,56 +7,61 @@ interface Certificate {
   issuer: string;
   date: string;
   credential?: string;
+  link: string;
 }
 
 const certificatesData: Certificate[] = [
   {
     id: 1,
-    name: "Full Stack Web Development",
-    issuer: "Example Academy",
-    date: "December 2023",
-    credential: "CERT-123456"
+    name: "Associate Cloud Engineer",
+    issuer: "Google",
+    date: "June 2024",
+    credential: "144115",
+    link: "https://drive.google.com/file/d/1_ktL8UEWZmb8QlwhqJxTshxRBWaF_ENH/view?usp=sharing"
   },
   {
     id: 2,
-    name: "Machine Learning Specialization",
-    issuer: "Tech University",
-    date: "March 2023",
-    credential: "ML-789012"
+    name: "Salesforce Developer",
+    issuer: "SmartBridge",
+    date: "August 2024",
+    credential: "SISFVIPAD2024-95584",
+    link: "https://drive.google.com/file/d/1hmLRF3zLQuMFmcFpCYIr5piJWRQaSdvO/view?usp=sharing"
   },
   {
     id: 3,
-    name: "UI/UX Design Fundamentals",
-    issuer: "Design Institute",
-    date: "August 2022",
-    credential: "DESIGN-345678"
+    name: "Gate 2025",
+    issuer: "IIT Roorkela",
+    date: "April 2025",
+    credential: "CS25 - 110085",
+    link: "https://drive.google.com/file/d/1FDpSkfTF6In6zWMjMB4-r3VkuFE81Cv2/view?usp=drive_link"
   },
   {
     id: 4,
-    name: "Cloud Computing Certification",
-    issuer: "Cloud Platform",
-    date: "January 2022",
-    credential: "CLOUD-901234"
+    name: "RPA Developer",
+    issuer: "UiPath",
+    date: "March 2024",
+    credential: "29D9-FAA15",
+    link: "https://drive.google.com/file/d/107y2hY86jcmbAnCDoEtv613GVFOHyff3/view?usp=sharing"
   },
   {
     id: 5,
-    name: "Agile Project Management",
-    issuer: "Project Management Institute",
-    date: "October 2021",
-    credential: "APM-567890"
+    name: "Deep Learning",
+    issuer: "IIT Roopar",
+    date: "January 2024",
+    credential: "NPTEL-00987",
+    link: "https://drive.google.com/file/d/1B38dcSBuqtOg8A9JR6gjaVQQuHjKE0Qf/view?usp=sharing"
   },
   {
     id: 6,
-    name: "Data Science with Python",
-    issuer: "Data Academy",
-    date: "July 2021",
-    credential: "DS-123456"
+    name: "Cyber Security",
+    issuer: "PaloAlto",
+    date: "March 2024",
+    credential: "2BCE-D10D",
+    link: "https://drive.google.com/file/d/1et-xQcEKyESke3yiinIR8CF8cC1uA4eH/view?usp=sharing"
   }
 ];
 
 const Certificates = () => {
-  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
   const certificatesRef = useRef<HTMLDivElement>(null);
   const [hoveredCards, setHoveredCards] = useState<{[key: number]: boolean}>({});
   
@@ -82,19 +86,6 @@ const Certificates = () => {
     return () => observer.disconnect();
   }, []);
   
-  const openModal = (certificate: Certificate) => {
-    setSelectedCertificate(certificate);
-    setModalOpen(true);
-    // Disable page scrolling when modal is open
-    document.body.style.overflow = 'hidden';
-  };
-  
-  const closeModal = () => {
-    setModalOpen(false);
-    // Re-enable page scrolling
-    document.body.style.overflow = 'auto';
-  };
-
   return (
     <section id="certificates" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
@@ -108,7 +99,7 @@ const Certificates = () => {
             <div 
               key={certificate.id}
               className="certificate-card opacity-0 translate-y-10 transition-all duration-700"
-              onClick={() => openModal(certificate)}
+              onClick={() => window.open(certificate.link, '_blank')}
               onMouseEnter={() => {
                 if (!hoveredCards[certificate.id]) {
                   setHoveredCards(prev => ({ ...prev, [certificate.id]: true }));
@@ -148,50 +139,6 @@ const Certificates = () => {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-      
-      {/* Certificate Modal */}
-      <div className={`fixed inset-0 z-50 ${modalOpen ? 'modal-open' : 'hidden'}`}>
-        <div className="modal-overlay" onClick={closeModal}></div>
-        <div className="modal-content">
-          {selectedCertificate && (
-            <div>
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex items-center gap-3">
-                  <Award className="text-primary w-8 h-8 award-icon-continuous" />
-                  <h3 className="text-2xl font-bold">{selectedCertificate.name}</h3>
-                </div>
-                <button 
-                  onClick={closeModal}
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-semibold text-gray-600 dark:text-gray-400">Issued By</h4>
-                  <p className="text-lg">{selectedCertificate.issuer}</p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-gray-600 dark:text-gray-400">Issue Date</h4>
-                  <p className="text-lg">{selectedCertificate.date}</p>
-                </div>
-                
-                {selectedCertificate.credential && (
-                  <div>
-                    <h4 className="font-semibold text-gray-600 dark:text-gray-400">Credential ID</h4>
-                    <p className="text-lg font-mono">{selectedCertificate.credential}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>

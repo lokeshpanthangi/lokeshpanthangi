@@ -16,12 +16,12 @@ interface Blog {
 const blogsData: Blog[] = [
   {
     id: 1,
-    title: "Gen AI - The Man-Made Creator",
-    summary: "Have you ever stopped to wonder what it means when machines start to create alongside us? When algorithms begin to paint, write, and compose with an almost human-like touch? This post explores the dawn of generative AI, its impact on creativity, and what makes it different from traditional AI.",
-    date: "May 16, 2025",
-    url: "https://gencreator.blogspot.com/2025/05/thegencreator.html",
+    title: "Gen AI ~ The Man-Made Creator",
+    summary: `What if the intelligence we created eventually surpasses our own ability to understand it?\n\nIt was afternoon around 2:00 PM-IST, and I was huddled over my laptop in my college computer lab. While my classmates were either sleeping or cramming for exams, I was amazed by the code running on my screen. For the first time, my ML model had created something I hadn't explicitly programmed it to do—it had learned to recognize patterns in my handwriting that even I hadn't noticed, my hand writing is very bad sometimes even I am unable to understand what I wrote My model was able to understand what I actually wrote and find a pattren in it who wouldn't be shocked. That moment in my third year of B.Tech was nothing short of magical. I wasn't just a student anymore; I was witnessing creation through creation.\n\nThis is the fascinating paradox of Generative AI—humanity's attempt to build systems that can themselves create, imagine, and innovate. I was like ABSOLUTE CINEMA!!`,
+    date: "May 17, 2025",
+    url: "https://gencreator.blogspot.com/2025/05/themanscreation.html",
     tags: ["Generative AI", "Creativity", "Technology", "AI"],
-    readTime: "7 min read"
+    readTime: "9 min read"
   },
   {
     id: 2,
@@ -139,8 +139,14 @@ const Blogs = () => {
                   {/* Title with hover effect */}
                   <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">{blog.title}</h3>
                   
-                  {/* Summary */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">{blog.summary}</p>
+                  {/* Summary: only show the question for the first blog, else normal */}
+                  {blog.id === 1 ? (
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+                      What if the intelligence we created eventually surpasses our own ability to understand it?
+                    </p>
+                  ) : (
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">{blog.summary}</p>
+                  )}
                   
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-3">
@@ -215,9 +221,15 @@ const Blogs = () => {
               
               {/* Summary */}
               <div className="prose dark:prose-invert max-w-none">
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {selectedBlog.summary}
-                </p>
+                {selectedBlog && selectedBlog.id === 1 ? (
+                  <pre className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-wrap" style={{fontFamily: 'inherit', background: 'none', padding: 0, margin: 0}}>
+                    {selectedBlog.summary}
+                  </pre>
+                ) : (
+                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {selectedBlog && selectedBlog.summary}
+                  </p>
+                )}
               </div>
               
               {/* Call to action */}
