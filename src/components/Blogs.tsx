@@ -22,33 +22,6 @@ const blogsData: Blog[] = [
     url: "https://gencreator.blogspot.com/2025/05/themanscreation.html",
     tags: ["Generative AI", "Creativity", "Technology", "AI"],
     readTime: "9 min read"
-  },
-  {
-    id: 2,
-    title: "The Future of Cloud Computing",
-    summary: "Exploring emerging trends in cloud computing and what they mean for businesses.",
-    date: "March 3, 2025",
-    url: "https://example.com/blog/cloud-future",
-    tags: ["Cloud", "AWS", "DevOps"],
-    readTime: "12 min read"
-  },
-  {
-    id: 3,
-    title: "Mastering TypeScript: Advanced Patterns",
-    summary: "Learn advanced TypeScript patterns and techniques to write more robust code.",
-    date: "February 18, 2025",
-    url: "https://example.com/blog/typescript-patterns",
-    tags: ["TypeScript", "JavaScript", "Programming"],
-    readTime: "10 min read"
-  },
-  {
-    id: 4,
-    title: "The State of Frontend Development in 2025",
-    summary: "An overview of the current state of frontend development and predictions for the future.",
-    date: "January 25, 2025",
-    url: "https://example.com/blog/frontend-2025",
-    tags: ["Frontend", "Web Development", "UI/UX"],
-    readTime: "6 min read"
   }
 ];
 

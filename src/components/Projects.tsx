@@ -89,12 +89,24 @@ const projectsData: Project[] = [
   },
   {
     id: 5,
-    title: "Social Media Dashboard",
-    description: "A comprehensive analytics dashboard for tracking social media performance across multiple platforms.",
-    technologies: ["Vue.js", "D3.js", "Node.js", "Express"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800",
-    github: "https://github.com",
-    color: "#7209b7"
+    title: "Slack Clone with AI Integration",
+    description: `🚀 Slack Clone with AI Integration\n\nA modern, feature-rich Slack clone built with React, TypeScript, and AI-powered capabilities. This application provides real-time messaging, workspace management, and intelligent features like tone analysis and AI-assisted communication. Features include authentication & user management, real-time messaging in channels, direct messages, threaded conversations, message reactions, file sharing, and AI features such as tone analysis, AI Assistant (@zani), smart replies, and meeting notes generation. The app has beautiful, responsive design with dark/light theme support and mobile-friendly interface.`,
+    technologies: [
+      "React 18",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "shadcn/ui & Radix UI",
+      "Framer Motion",
+      "React Context",
+      "TanStack Query",
+      "OpenAI API"
+    ],
+    image: "/tiller-blog-slack-brand-audit-960x540.png",
+    github: "https://github.com/lokeshpanthangi/slack-mock1",
+    demo: "https://slack-mock1.vercel.app",
+    featured: true,
+    color: "#6B2A6B"
   }
 ];
 

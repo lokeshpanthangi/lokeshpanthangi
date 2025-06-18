@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import SplitText from './ui/SplitText';
 
 const Hero = () => {
   const [nameAnimationComplete, setNameAnimationComplete] = useState(false);
@@ -42,6 +43,10 @@ const Hero = () => {
     };
   }, []);
 
+  const handleNameAnimationComplete = () => {
+    setNameAnimationComplete(true);
+  };
+
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center parallax gradient-bg">
       <div className="absolute top-0 left-0 w-full h-full opacity-20">
@@ -67,21 +72,37 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-            <span className="inline-block">Hi, I'm</span>{' '}
-            {!nameAnimationComplete ? (
-              <span className="text-primary inline-block animate-text-reveal">Venkata Lokesh Panthangi</span>
-            ) : (
-              <span className="text-primary inline-block">Venkata Lokesh Panthangi</span>
-            )}
+            <SplitText 
+              text="Hi, I'm" 
+              className="mr-2"
+              delay={50}
+              duration={0.8}
+              from={{ opacity: 0, y: 50 }}
+              to={{ opacity: 1, y: 0 }}
+              splitType="words"
+            />
+            <SplitText 
+              text="Venkata Lokesh Panthangi" 
+              className="text-primary"
+              delay={80}
+              duration={0.8}
+              from={{ opacity: 0, y: 50, rotationX: -90 }}
+              to={{ opacity: 1, y: 0, rotationX: 0 }}
+              onLetterAnimationComplete={handleNameAnimationComplete}
+            />
           </h1>
           
-          <div className="overflow-hidden h-16 my-4">
-            <div className="animate-float flex flex-col">
-              <p className="text-lg md:text-2xl font-light text-white py-3">AI & ML Engineer</p>
-              <p className="text-lg md:text-2xl font-light text-white py-3">Deep Learning Specialist</p>
-              <p className="text-lg md:text-2xl font-light text-white py-3">Data Scientist</p>
-              <p className="text-lg md:text-2xl font-light text-white py-3">AI & ML Engineer</p>
-            </div>
+          <div className="h-16 my-4 overflow-visible">
+            <SplitText 
+              text=" • AI & ML Engineer • Deep Learning Specialist"
+              className="text-lg md:text-2xl font-light text-white"
+              delay={30}
+              duration={0.5}
+              from={{ opacity: 0, y: 20 }}
+              to={{ opacity: 1, y: 0 }}
+              splitType="words"
+              threshold={0.5}
+            />
           </div>
           
           <div className="mt-8 flex flex-wrap justify-center gap-4">
