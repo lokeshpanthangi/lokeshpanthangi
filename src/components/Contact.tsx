@@ -56,7 +56,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">Add me to your Story</h2>
         
         <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="pl-8 md:pl-32 pt-8 md:pt-12">
