@@ -130,26 +130,7 @@ const Resume = () => {
                       </ul>
                     </div>
                   </div>
-                  {/* Zensar Technologies Experience */}
-                  <div className="resume-card group">
-                    <div className="resume-card-timeline"></div>
-                    <div className="resume-card-dot"></div>
-                    <div className="resume-card-content">
-                      <div className="flex flex-row justify-between items-center mb-1">
-                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Application Implementer</h4>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center ml-4">Jan 2025 – Apr 2025</span>
-                      </div>
-                      <div className="flex flex-row justify-between items-center mb-2">
-                        <span className="italic text-gray-800 dark:text-gray-200 font-normal">Zensar Technologies</span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Bangalore</span>
-                      </div>
-                      <ul className="list-disc pl-5 space-y-2 mt-2 text-gray-600 dark:text-gray-300">
-                        <li>Collaborated with cross-functional teams to deploy and configure enterprise applications, ensuring seamless integration with client systems.</li>
-                        <li>Provided technical support and training to end-users, improving adoption rates and reducing post-implementation issues.</li>
-                        <li>Customized application features based on client requirements, enhancing user experience and operational efficiency.</li>
-                      </ul>
-                    </div>
-                  </div>
+
                 </div>
               )}
               

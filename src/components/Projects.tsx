@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Github } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -189,7 +190,21 @@ const Projects = () => {
       <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="section-title with-glowing-dots">Featured Projects</h2>
+          <div className="flex items-baseline justify-center gap-4 mb-4">
+            <h2 className="section-title with-glowing-dots">Featured Projects</h2>
+            <a 
+              href="https://github.com/lokeshpanthangi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-300 hover:scale-110 group -translate-y-1 md:-translate-y-2"
+              title="View all projects on GitHub"
+            >
+              <Github 
+                size={20} 
+                className="md:w-6 md:h-6 text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors" 
+              />
+            </a>
+          </div>
           <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
             Explore my latest work and creative solutions. Each project represents a unique challenge and innovative approach.
           </p>

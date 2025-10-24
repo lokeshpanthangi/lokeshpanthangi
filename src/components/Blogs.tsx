@@ -15,15 +15,6 @@ interface Blog {
 
 const blogsData: Blog[] = [
   {
-    id: 2,
-    title: "Tokenization ~ The Secret Behind AI Understanding",
-    summary: `Ever wondered how AI understands your English, Even the messy ones ??\n\nEver wondered how ChatGPT understands your messy typing, complete with typos and slang? Or how it can switch between coding Python and writing poetry in the same conversation? The answer lies in something most people have never heard of: **tokenization**, I persnoally am amazed on how it understands what I actually write, Those spelling mistakes and the awesome grammer in english that I write.\n\nThink of tokenization as the translator that sits between human language and AI brains. Without it, asking an AI to "write me a story" would be like trying to explain calculus to your pet dog – technically possible, but highly ineffective, just kidding don't try that.\n\nAs a B.Tech student diving deep into AI, I've realized that tokenization isn't just a preprocessing step – it's literally the foundation that makes modern AI language models possible. Let me show you why this "boring" technical process is actually the most fascinating part of how AI works.`,
-    date: "June 21, 2025",
-    url: "https://lokesh.ghost.io/nanis-tokenization/",
-    tags: ["AI", "LLM", "NLP", "Machine Learning", "Tokenization"],
-    readTime: "5 min read"
-  },
-  {
     id: 1,
     title: "Gen AI ~ The Man-Made Creator",
     summary: `What if the intelligence we created eventually surpasses our own ability to understand it?\n\nIt was afternoon around 2:00 PM-IST, and I was huddled over my laptop in my college computer lab. While my classmates were either sleeping or cramming for exams, I was amazed by the code running on my screen. For the first time, my ML model had created something I hadn't explicitly programmed it to do—it had learned to recognize patterns in my handwriting that even I hadn't noticed, my hand writing is very bad sometimes even I am unable to understand what I wrote My model was able to understand what I actually wrote and find a pattren in it who wouldn't be shocked. That moment in my third year of B.Tech was nothing short of magical. I wasn't just a student anymore; I was witnessing creation through creation.\n\nThis is the fascinating paradox of Generative AI—humanity's attempt to build systems that can themselves create, imagine, and innovate. I was like ABSOLUTE CINEMA!!`,

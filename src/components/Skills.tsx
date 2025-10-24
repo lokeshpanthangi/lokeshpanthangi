@@ -7,35 +7,49 @@ interface Skill {
 }
 
 const skillsData: Skill[] = [
-  // Programming Languages
-  { id: 1, name: "Python", category: "Programming Languages" },
-  { id: 2, name: "Java", category: "Programming Languages" },
-  { id: 3, name: "JavaScript", category: "Programming Languages" },
-  { id: 4, name: "HTML", category: "Programming Languages" },
-  { id: 5, name: "CSS", category: "Programming Languages" },
-  { id: 6, name: "R Programming", category: "Programming Languages" },
+  // Gen AI
+  { id: 1, name: "AI Agents", category: "Gen AI" },
+  { id: 2, name: "n8n", category: "Gen AI" },
+  { id: 3, name: "LangChain", category: "Gen AI" },
+  { id: 4, name: "LangGraph", category: "Gen AI" },
+  { id: 5, name: "CrewAI", category: "Gen AI" },
+
+  // RAG
+  { id: 6, name: "Traditional RAG", category: "RAG" },
+  { id: 7, name: "Multimodal RAG", category: "RAG" },
+  { id: 8, name: "Knowledge Graphs", category: "RAG" },
+  { id: 9, name: "Agentic RAG", category: "RAG" },
+
+  // LLM
+  { id: 10, name: "Transformers", category: "LLM" },
+  { id: 11, name: "Fine-Tuning (Unsloth)", category: "LLM" },
+
+  // Machine Learning
+  { id: 12, name: "Supervised Learning", category: "Machine Learning" },
+  { id: 13, name: "Unsupervised Learning", category: "Machine Learning" },
+  { id: 14, name: "Deep Learning", category: "Machine Learning" },
 
   // Core CS
-  { id: 7, name: "Data Structures and Algorithms", category: "Core CS" },
-  { id: 8, name: "TCP/IP Networking", category: "Core CS" },
-  { id: 9, name: "Computer Networks", category: "Core CS" },
-  { id: 10, name: "Operating Systems (Linux/Unix, Windows)", category: "Core CS" },
-
-  // Web Frameworks
-  { id: 11, name: "Django", category: "Web Frameworks" },
-  { id: 12, name: "Streamlit", category: "Web Frameworks" },
-  { id: 13, name: "Flask (Basic Exposure)", category: "Web Frameworks" },
+  { id: 15, name: "Data Structures and Algorithms", category: "Core CS" },
+  { id: 16, name: "TCP/IP Networking", category: "Core CS" },
+  { id: 17, name: "Computer Networks", category: "Core CS" },
+  { id: 18, name: "Operating Systems", category: "Core CS" },
+  { id: 19, name: "OOP", category: "Core CS" },
 
   // Databases
-  { id: 14, name: "MySQL", category: "Databases" },
-  { id: 15, name: "SQL", category: "Databases" },
-  { id: 16, name: "Familiarity with NoSQL databases (MongoDB)", category: "Databases" },
+  { id: 20, name: "MySQL", category: "Databases" },
+  { id: 21, name: "SQL", category: "Databases" },
+  { id: 22, name: "Redis", category: "Databases" },
+  { id: 23, name: "GraphDB", category: "Databases" },
 
-  // Machine Learning & AI
-  { id: 17, name: "Machine Learning", category: "Machine Learning & AI" },
-  { id: 18, name: "Deep Learning", category: "Machine Learning & AI" },
-  { id: 19, name: "Natural Language Processing", category: "Machine Learning & AI" },
-  { id: 20, name: "Generative AI (GenAI) Tools", category: "Machine Learning & AI" },
+  // Development
+  { id: 24, name: "Python", category: "Development" },
+  { id: 25, name: "React", category: "Development" },
+  { id: 26, name: "FastAPI", category: "Development" },
+  { id: 27, name: "Pydantic", category: "Development" },
+  { id: 28, name: "Streamlit", category: "Development" },
+  { id: 29, name: "Docker", category: "Development" },
+  { id: 30, name: "AWS", category: "Development" },
 ];
 
 const Skills = () => {
