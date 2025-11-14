@@ -1,58 +1,65 @@
 <div align="center">
 
-# 👨‍💻 Venkata Lokesh Panthangi
+# Venkata Lokesh Panthangi
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&random=false&width=600&lines=AI+%26+ML+Engineer;Full+Stack+Developer;Cloud+Enthusiast;Problem+Solver" alt="Typing SVG" />
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lokeshpanthangi)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lokeshpanthangi)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:lokeshpanthangi@example.com)
+[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/lokeshpanthangi)
 
 </div>
 
 ---
 
-## 🎯 TL;DR (The Gen Z Version)
+## About Me
 
-yo wassup! 👋 I'm Lokesh, and I'm basically that person who's lowkey obsessed with AI/ML and making computers do cool stuff. Currently grinding through my B.Tech at VVIT while simultaneously being a full-time code wizard ✨
+Hey there! I'm Lokesh, an AI/ML Engineer and final-year B.Tech student at VVIT who's basically been living rent-free in the intersection of artificial intelligence and questionable caffeine intake. Remember that kid who took apart their toys to see how they worked? Yeah, that's me—except now I'm taking apart neural networks at 2 AM in my college lab while everyone else is either sleeping or having a social life (what's that?).
 
-no cap, I've been:
-- 🚀 making pumps smarter at Brainovision (reduced downtime by 18% fr fr)
-- 🤖 building AI agents that actually work (not the mid ones)
-- 💪 hitting the gym AND leetcode (300+ problems crushed, respectfully)
-- 🎮 being an esports tryhard on the side
-- ☁️ certified GCP associate cloud engineer (flexing my cloud game)
-- 📝 writing unofficial expansions for RDR2 (because why not?)
+My journey started when I accidentally made my ML model understand my chicken-scratch handwriting better than I could. That "ABSOLUTE CINEMA" moment in third year? Life-changing. Since then, I've been on a mission to make machines smarter while somehow maintaining my sanity and a gym membership (priorities, right?).
 
-basically, if it involves AI, cloud, or making dope web apps, I'm your guy. always down to collab on cool projects or chat about tech. let's build something fire! 🔥
+**The Highlight Reel:**
+- Built a Django-based real-time monitoring system at Brainovision that reduced pump downtime by 18% and achieved 89.8% system uptime across 50+ industrial pumps (basically turned dumb pumps into Harvard graduates)
+- Crushed 300+ LeetCode problems because apparently, I enjoy pain and suffering in algorithm form
+- Became a Google Associate Cloud Engineer (my cloud game is stronger than my social game)
+- Qualified GATE 2024 with AIR 15,202 (hey, at least I made it to the leaderboard)
+- Conducted a hackathon in my branch (from participant to organizer—character development at its finest)
+- Wrote an unofficial expansion for Red Dead Redemption 2 because when you're not debugging code, might as well be a creative writer
 
-*p.s. - GATE 2024 qualified, conducted hackathons, and still got time for hobbies. built different 💯*
+**Current Status:**
+- Mastering Generative AI, RAG systems, and LLMs (LangChain, LangGraph, CrewAI—the holy trinity)
+- Building full-stack applications with React, TypeScript, and whatever new framework dropped this week
+- Training models that can actually understand context (unlike some people I know)
+- Deploying scalable solutions with Docker, AWS, and GCP (containers > commitment, fight me)
+- Writing blog posts about AI that hopefully make sense (check out "Gen AI ~ The Man-Made Creator")
 
----
+**The Fun Stuff:**
+When I'm not debugging at ungodly hours, you'll find me at the gym (gotta balance that desk life), dominating in esports (my K/D ratio > my GPA), strategizing over board games, or taking long walks to contemplate why my code worked yesterday but not today. I'm also that person who thinks Red Dead Redemption 2 needed more content, so I wrote some.
 
-## 💼 Professional Summary
+**Tech Arsenal:**
+From building AI agents that don't suck to crafting beautiful UIs with React and Tailwind, from wrangling databases (MySQL, PostgreSQL, Redis, GraphDB) to deploying ML models in production, I've pretty much touched every part of the modern tech stack. Whether it's traditional RAG, multimodal RAG, knowledge graphs, or agentic RAG—I've implemented them all. Deep learning? Check. Transformers? Check. Fine-tuning with Unsloth? Check. Making it all work together? Still working on it.
 
-AI & ML Engineer and B.Tech student at VVIT, specializing in Artificial Intelligence and Machine Learning. Passionate about building intelligent, scalable solutions that bridge the gap between data science and real-world applications.
+**Project Highlights:**
+- **TaskPal**: Because the world needed another task manager (but mine has AI features and actually looks good)
+- **EchoVoice**: Voice journaling app where your future self can cringe at past messages
+- **WiseChoice**: AI shopping assistant that tells you when you're being scammed online (you're welcome)
+- **BookBurst**: For book nerds who want to flex their reading stats
+- **Slack Clone with AI**: Built a Slack clone with AI integration featuring @zani assistant, tone analysis, and smart replies (because regular messaging is too mainstream)
 
-### 🎓 Education
-**B.Tech in Computer Science Engineering - AI & ML**  
+I'm always down to collaborate on cool projects, discuss the latest in AI/ML, or debate whether tabs or spaces are superior (it's spaces, obviously). If you're building something interesting or just want to chat about how we're all going to be replaced by AI someday, hit me up!
+
+**Education:**  
+B.Tech in Computer Science Engineering - AI & ML  
 Vasireddy Venkatadri Institute of Technology (VVIT) | 2021–2025 | Guntur
 
-### 🏆 Key Achievements
-- ✅ Achieved **89.8% system uptime** with real-time monitoring system at Brainovision
-- ✅ Solved **300+ problems** on LeetCode
-- ✅ **Google Associate Cloud Engineer** Certified
-- ✅ **GATE 2024** Qualified (AIR 15,202)
-- ✅ Conducted Hackathon in Computer Science branch
-- ✅ Wrote Unofficial Expansion for Red Dead Redemption 2
-
 ---
 
-## 🛠️ Tech Stack & Skills
+## Tech Stack
 
 <div align="center">
 
-### 🤖 Generative AI & LLMs
+### Generative AI & LLMs
 ![LangChain](https://img.shields.io/badge/LangChain-121212?style=for-the-badge&logo=chainlink&logoColor=white)
 ![LangGraph](https://img.shields.io/badge/LangGraph-FF6B6B?style=for-the-badge)
 ![CrewAI](https://img.shields.io/badge/CrewAI-6C5CE7?style=for-the-badge)
@@ -60,13 +67,13 @@ Vasireddy Venkatadri Institute of Technology (VVIT) | 2021–2025 | Guntur
 ![Transformers](https://img.shields.io/badge/🤗_Transformers-FFD21E?style=for-the-badge)
 ![Unsloth](https://img.shields.io/badge/Unsloth-00D9FF?style=for-the-badge)
 
-### 🔍 RAG & Knowledge Systems
+### RAG & Knowledge Systems
 ![Traditional RAG](https://img.shields.io/badge/Traditional_RAG-4A90E2?style=for-the-badge)
 ![Multimodal RAG](https://img.shields.io/badge/Multimodal_RAG-8E44AD?style=for-the-badge)
 ![Knowledge Graphs](https://img.shields.io/badge/Knowledge_Graphs-E67E22?style=for-the-badge)
 ![Agentic RAG](https://img.shields.io/badge/Agentic_RAG-16A085?style=for-the-badge)
 
-### 🧠 Machine Learning & AI
+### Machine Learning & AI
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
@@ -74,61 +81,94 @@ Vasireddy Venkatadri Institute of Technology (VVIT) | 2021–2025 | Guntur
 ![Supervised Learning](https://img.shields.io/badge/Supervised_Learning-00B4D8?style=for-the-badge)
 ![Deep Learning](https://img.shields.io/badge/Deep_Learning-0077B6?style=for-the-badge)
 
-### 💻 Development & Frameworks
+### Development & Frameworks
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-### 🗄️ Databases
+### Databases
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![GraphDB](https://img.shields.io/badge/GraphDB-6C5CE7?style=for-the-badge)
 
-### ☁️ Cloud & DevOps
+### Cloud & DevOps
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-### 📚 Core CS Fundamentals
-![DSA](https://img.shields.io/badge/Data_Structures-00C853?style=for-the-badge)
+### Core CS Fundamentals
+![Data Structures](https://img.shields.io/badge/Data_Structures-00C853?style=for-the-badge)
 ![Algorithms](https://img.shields.io/badge/Algorithms-1DE9B6?style=for-the-badge)
 ![TCP/IP](https://img.shields.io/badge/TCP/IP-0288D1?style=for-the-badge)
-![OS](https://img.shields.io/badge/Operating_Systems-00897B?style=for-the-badge)
+![Operating Systems](https://img.shields.io/badge/Operating_Systems-00897B?style=for-the-badge)
 ![OOP](https://img.shields.io/badge/OOP-5C6BC0?style=for-the-badge)
 
 </div>
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
-### 🎯 [TaskPal](https://github.com/lokeshpanthangi/taskpal-official) | [Live Demo](https://taskpal-official.onrender.com)
-Ultimate task & project management app with secure authentication, customizable profiles, and real-time collaboration features.
-- **Tech:** React 18, TypeScript, Tailwind CSS, Supabase, Framer Motion
-- **Features:** JWT auth, real-time updates, productivity analytics, calendar view
+### TaskPal | [GitHub](https://github.com/lokeshpanthangi/taskpal-official) | [Live Demo](https://taskpal-official.onrender.com)
+Ultimate task & project management application with real-time collaboration, productivity analytics, and team management features.
+- **Stack:** React 18, TypeScript, Tailwind CSS, Supabase, Framer Motion, React Query
+- **Features:** JWT authentication, real-time updates, calendar view, task dependencies, recurring tasks, progress tracking
+- **Highlights:** Comprehensive dashboard, file storage, customizable themes, mobile-responsive design
 
-### 🌊 [EchoVoice](https://github.com/lokeshpanthangi/EchoVoice-official) | [Live Demo](https://echovoice-official.vercel.app/)
-Voice journaling app for recording audio time capsules with mood tracking and timeline visualization.
-- **Tech:** React, TypeScript, Supabase, Tailwind CSS
-- **Features:** Audio recording, mood tagging, secure storage, responsive UI
+### EchoVoice | [GitHub](https://github.com/lokeshpanthangi/EchoVoice-official) | [Live Demo](https://echovoice-official.vercel.app/)
+Voice journaling application for recording audio time capsules with mood tracking and timeline visualization.
+- **Stack:** React, TypeScript, Supabase, Tailwind CSS, Vite
+- **Features:** Audio recording, mood tagging, future unlock dates, timeline view, secure storage
+- **Highlights:** Row-level security, beautiful UI/UX, dark/light themes, profile customization
 
-### 🌐 [WiseChoice](https://github.com/lokeshpanthangi/WiseChoice)
-AI-powered shopping assistant that filters fake reviews, performs sentiment analysis, and assesses price fairness.
-- **Tech:** Flask, Selenium, Transformers, Next.js, NLTK
-- **Features:** Fake review detection, AI chatbot, price comparison, product grading
+### WiseChoice | [GitHub](https://github.com/lokeshpanthangi/WiseChoice)
+AI-powered shopping assistant that analyzes reviews, detects fake content, and provides intelligent product recommendations.
+- **Stack:** Flask, Selenium, Transformers, NLTK, Next.js, React, Tailwind CSS
+- **Features:** Fake review detection, sentiment analysis, price comparison, AI chatbot, product grading system
+- **Highlights:** Multi-platform scraping, NLP-based analysis, intelligent pricing insights
 
-### 📚 [BookBurst](https://github.com/lokeshpanthangi/bookburst)
-Modern web application for book enthusiasts to track reading journeys and connect with fellow readers.
-- **Tech:** React, TypeScript, Tailwind CSS, shadcn/ui
-- **Features:** Personal bookshelf, reading statistics, dark mode, social features
+### BookBurst | [GitHub](https://github.com/lokeshpanthangi/BookBurst-Official) | [Live Demo](https://bookburst-official.vercel.app/)
+Modern web application for book enthusiasts with personal bookshelf management and social features.
+- **Stack:** React, TypeScript, Tailwind CSS, shadcn/ui, Supabase, React Query
+- **Features:** Book tracking, reading statistics, private notes, public reviews, social connections
+- **Highlights:** Beautiful responsive design, dark mode, reading timeline, personalized recommendations
+
+### Slack Clone with AI Integration | [GitHub](https://github.com/lokeshpanthangi/slack-mock1) | [Live Demo](https://slack-mock1.vercel.app)
+Feature-rich Slack clone with AI-powered communication assistance and workspace management.
+- **Stack:** React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui, OpenAI API, Framer Motion
+- **Features:** Real-time messaging, channels & DMs, threaded conversations, file sharing, reactions
+- **AI Features:** Tone analysis, @zani AI assistant, smart replies, meeting notes generation
+- **Highlights:** Beautiful dark/light themes, mobile-friendly, real-time collaboration
 
 ---
 
-## 📊 GitHub Stats
+## Certifications
+
+- **Google Associate Cloud Engineer** - Google (June 2024) | [Verify](https://drive.google.com/file/d/1_ktL8UEWZmb8QlwhqJxTshxRBWaF_ENH/view?usp=sharing)
+- **GATE 2025** - IIT Roorkela (April 2025) | CS25-110085
+- **Deep Learning** - IIT Roorkela via NPTEL (January 2024)
+- **Salesforce Developer** - SmartBridge (August 2024)
+- **RPA Developer** - UiPath (March 2024)
+- **Cyber Security** - PaloAlto (March 2024)
+
+---
+
+## Blog
+
+**Gen AI ~ The Man-Made Creator** | [Read on Blogger](https://gencreator.blogspot.com/2025/05/themanscreation.html)
+
+A deep dive into the fascinating paradox of Generative AI and humanity's journey to build systems that can create, imagine, and innovate. Exploring the moment when my ML model first recognized patterns in my handwriting that I couldn't see myself—that "ABSOLUTE CINEMA" moment that changed everything.
+
+---
+
+## GitHub Stats
 
 <div align="center">
 
@@ -142,18 +182,9 @@ Modern web application for book enthusiasts to track reading journeys and connec
 
 ---
 
-## 🎮 Beyond Code
+## Get In Touch
 
-- 🏋️ Gym enthusiast
-- 🎮 Esports player
-- 🎲 Board game strategist
-- ✍️ Creative writer (RDR2 expansion author)
-
----
-
-## 💬 Get In Touch
-
-I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+I'm always open to discussing new projects, creative ideas, or opportunities to collaborate. Whether you're building something innovative or just want to chat about the latest in AI/ML, feel free to reach out!
 
 <div align="center">
 
@@ -161,6 +192,7 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lokeshpanthangi)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lokeshpanthangi)
 [![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/lokeshpanthangi)
+[![Blog](https://img.shields.io/badge/Blog-FF5722?style=for-the-badge&logo=blogger&logoColor=white)](https://gencreator.blogspot.com)
 
 </div>
 
@@ -168,45 +200,8 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 
 <div align="center">
 
-### 💡 *"Building the future, one intelligent solution at a time"*
+### "Building the future, one intelligent solution at a time"
 
 ![Profile Views](https://komarev.com/ghpvc/?username=lokeshpanthangi&color=blueviolet&style=for-the-badge)
 
-⭐ From [lokeshpanthangi](https://github.com/lokeshpanthangi) | Made with ❤️ and lots of ☕
-
 </div>
-- **Certificates:** Edit `src/components/Certificates.tsx` to update certificate info and links.
-- **Projects:** Edit `src/components/Projects.tsx` for your project showcase.
-- **Footer:** Edit `src/components/Footer.tsx` for your name, animation, and social links.
-- **Theme & Styles:** Tweak `tailwind.config.ts` and use shadcn/ui components for rapid UI changes.
-
----
-
-## 🌐 Deployment
-This project is ready for deployment on any static host (Vercel, Netlify, Render, etc.).
-
-**Deploy steps:**
-1. Push your code to GitHub.
-2. Connect your repo to your preferred platform (e.g., Vercel).
-3. Set the build command to `npm run build` and the output directory to `dist`.
-4. (Optional) Add environment variables as needed.
-
----
-
-## 📁 Project Structure
-- `src/components/` – All React components (Blogs, Certificates, Footer, etc.)
-- `src/content/blog/` – Blog markdown files
-- `public/` – Static assets
-- `tailwind.config.ts` – Tailwind CSS configuration
-- `vite.config.ts` – Vite configuration
-
----
-
-## 🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-## 👤 Author
-**Lokesh Panthangi**
-- [GitHub](https://github.com/lokeshpanthangi)
-- [LinkedIn](https://linkedin.com/in/lokeshpanthangi)
-- [Twitter](https://twitter.com/lokeshpanthangi)
