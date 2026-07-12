@@ -26,11 +26,11 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#3A86FF',
+					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
-					DEFAULT: '#4ECCA3', // Mint green
+					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				destructive: {
@@ -53,9 +53,9 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				dark: '#1A1A2E',
-				light: '#F8F7FF',
-				success: '#38B000',
+				// monochrome scale
+				ink: '#0a0a0a',
+				paper: '#fafafa',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -121,13 +121,29 @@ export default {
 					},
 					"50%": {
 						opacity: "0.5",
-						filter: "blur(5px)"  
+						filter: "blur(5px)"
 					},
 					"100%": {
 						transform: "scale(1)",
 						opacity: "1",
 						filter: "blur(0)"
 					}
+				},
+				"marquee": {
+					from: { transform: "translateX(0)" },
+					to: { transform: "translateX(-50%)" }
+				},
+				"marquee-reverse": {
+					from: { transform: "translateX(-50%)" },
+					to: { transform: "translateX(0)" }
+				},
+				"shine": {
+					"0%": { backgroundPosition: "200% center" },
+					"100%": { backgroundPosition: "-200% center" }
+				},
+				"grid-fade": {
+					"0%, 100%": { opacity: "0.15" },
+					"50%": { opacity: "0.35" }
 				}
 			},
 			animation: {
@@ -138,10 +154,15 @@ export default {
 				"morph": "morph 8s ease-in-out infinite",
 				"ripple": "ripple 0.6s linear",
 				"appear": "appear 0.8s ease-out forwards",
-				"text-reveal": "text-reveal 2.5s cubic-bezier(0.23, 1, 0.32, 1) forwards"
+				"text-reveal": "text-reveal 2.5s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+				"marquee": "marquee var(--marquee-duration, 40s) linear infinite",
+				"marquee-reverse": "marquee-reverse var(--marquee-duration, 40s) linear infinite",
+				"shine": "shine 6s linear infinite",
+				"grid-fade": "grid-fade 8s ease-in-out infinite"
 			},
 			fontFamily: {
-				'poppins': ['"Poppins"', 'sans-serif'],
+				'grotesk': ['"Space Grotesk"', 'sans-serif'],
+				'poppins': ['"Space Grotesk"', 'sans-serif'],
 				'inter': ['"Inter"', 'sans-serif'],
 				'space': ['"Space Mono"', 'monospace']
 			},

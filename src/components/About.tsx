@@ -1,86 +1,92 @@
-import { useEffect, useRef, useState } from 'react';
-import { Trophy, Dumbbell, Gamepad2, Footprints, Award, Code } from 'lucide-react';
+import { GraduationCap, Briefcase, Bot, Database, Cpu } from 'lucide-react';
+import SpotlightCard from './reactbits/SpotlightCard';
+
+const focus = [
+  { icon: Bot, title: 'Agentic AI', text: 'Autonomous & human-in-the-loop agents with LangGraph, CrewAI, and MCP tool use.' },
+  { icon: Database, title: 'RAG Systems', text: 'Traditional, multimodal & graph RAG with vector stores and retrieval eval.' },
+  { icon: Cpu, title: 'LLMOps', text: 'Fine-tuning, evaluation & full observability — LangSmith, Prometheus, Grafana.' },
+];
+
+const stats = [
+  { value: '130+', label: 'Repositories' },
+  { value: '200+', label: 'LeetCode solved' },
+  { value: '16+', label: 'Languages shipped' },
+];
 
 const About = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const photoRef = useRef<HTMLDivElement>(null);
-  const bioRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-    
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section 
-      id="about" 
-      ref={sectionRef}
-      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
-    >
-      <div className="container mx-auto px-4 md:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
-        {/* Main About Card */}
-        <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8 lg:mb-0">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Hello, I'm <span className="text-primary">Venkata Lokesh Panthangi</span>
-          </h1>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-            I'm an <b>AI & ML Engineer</b> and B.Tech student at VVIT, specializing in Artificial Intelligence and Machine Learning. I'm passionate about building intelligent, scalable solutions that merge data and real-world needs.
-          </p>
-          <ul className="mb-6 space-y-3">
-            <li className="flex items-start gap-2"><span className="text-primary mt-1">&#8250;</span> Achieved 89.8% system uptime and 18% downtime reduction by developing a Django-based real-time monitoring system for 50+ pressure pumps at Brainovision.</li>
-            <li className="flex items-start gap-2"><span className="text-primary mt-1">&#8250;</span> Built and deployed AI/ML projects, including generative AI models and deep learning solutions for real-world applications.</li>
-            <li className="flex items-start gap-2"><span className="text-primary mt-1">&#8250;</span> Certified Google Associate Cloud Engineer, GATE 2024 qualified, and solved 300+ LeetCode problems.</li>
-          </ul>
-          {/* Education Card */}
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-5 mt-6">
-            <div className="flex items-center mb-2">
-              <Code className="text-primary mr-2" size={20} />
-              <span className="font-semibold text-lg">Education</span>
+    <section id="about" className="relative overflow-hidden py-24">
+      <div className="container relative z-10 mx-auto px-6">
+        <p className="section-kicker">01 — About</p>
+        <h2 className="section-title mt-3">Who I am</h2>
+
+        <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">
+          {/* Main bio */}
+          <SpotlightCard className="lg:col-span-2">
+            <div className="p-8 md:p-10">
+              <h3 className="font-grotesk text-2xl font-bold text-white md:text-3xl">
+                AI Engineer building systems that <span className="text-white/50">think, retrieve, and act.</span>
+              </h3>
+              <p className="mt-5 leading-relaxed text-white/60">
+                I&apos;m Lokesh — an AI Engineer focused on agentic AI, retrieval-augmented generation, and the
+                LLMOps around them. I completed my B.Tech in CSE (AI &amp; ML) at VVIT in 2025 and now work
+                full-time at <span className="text-white">Driftal People Tech Solutions</span>, while sharpening
+                advanced AI engineering at <span className="text-white">MisogiAI (Masai)</span>.
+              </p>
+              <p className="mt-4 leading-relaxed text-white/60">
+                From multi-agent orchestration and MCP servers to fine-tuning Llama &amp; Mistral and shipping
+                evaluated RAG pipelines with real observability, I like taking AI from notebook to production.
+              </p>
+
+              <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                {stats.map((s) => (
+                  <div key={s.label}>
+                    <div className="font-grotesk text-2xl font-bold text-white md:text-3xl">{s.value}</div>
+                    <div className="mt-1 text-xs text-white/45">{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="mb-1 font-medium text-gray-900 dark:text-gray-100">B.Tech in Computer Science Engineering - AI & ML</div>
-            <div className="text-gray-700 dark:text-gray-300 mb-1 italic">Vasireddy Venkatadri Institute of Technology (VVIT)</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">2021–2025 | Guntur</div>
+          </SpotlightCard>
+
+          {/* Side: current + education */}
+          <div className="flex flex-col gap-6">
+            <div className="card-mono p-6">
+              <div className="mb-3 flex items-center gap-2 text-white/50">
+                <Briefcase size={16} />
+                <span className="text-xs uppercase tracking-widest">Currently</span>
+              </div>
+              <div className="font-grotesk text-lg font-semibold text-white">AI Engineer</div>
+              <div className="text-sm text-white/60">Driftal People Tech Solutions</div>
+              <div className="mt-1 font-space text-xs text-white/35">Present</div>
+            </div>
+
+            <div className="card-mono p-6">
+              <div className="mb-3 flex items-center gap-2 text-white/50">
+                <GraduationCap size={16} />
+                <span className="text-xs uppercase tracking-widest">Education</span>
+              </div>
+              <div className="font-grotesk text-base font-semibold text-white">AI Engineering</div>
+              <div className="text-sm text-white/60">MisogiAI · Masai — Bengaluru</div>
+              <div className="mt-1 font-space text-xs text-white/35">Jun 2025 – Present</div>
+              <div className="mt-4 border-t border-white/10 pt-4">
+                <div className="font-grotesk text-base font-semibold text-white">B.Tech CSE — AI &amp; ML</div>
+                <div className="text-sm text-white/60">VVIT — Guntur</div>
+                <div className="mt-1 font-space text-xs text-white/35">2021 – 2025</div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* Right Side Cards */}
-        <div className="flex flex-col gap-8">
-          {/* Achievements Card */}
-          <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6">
-            <div className="flex items-center mb-3">
-              <Award className="text-primary mr-2 animate-bounce" size={20} />
-              <span className="font-semibold text-lg">Achievements</span>
+
+        {/* Focus areas */}
+        <div className="mx-auto mt-6 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
+          {focus.map((f) => (
+            <div key={f.title} className="card-mono p-6">
+              <f.icon className="text-white" size={22} />
+              <h4 className="mt-4 font-grotesk text-lg font-semibold text-white">{f.title}</h4>
+              <p className="mt-2 text-sm leading-relaxed text-white/55">{f.text}</p>
             </div>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              <li>Solved 300+ problems on LeetCode</li>
-              <li>Certified Google Associate Cloud Engineer</li>
-              <li>Qualified GATE 2024 (AIR 15,202)</li>
-              <li>Conducted a Hackathon in my branch</li>
-              <li>Wrote an Unofficial Expansion for RDR2</li>
-            </ul>
-          </div>
-          {/* Hobbies Card */}
-          <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6">
-            <div className="flex items-center mb-3">
-              <Footprints className="text-primary mr-2 animate-pulse" size={20} />
-              <span className="font-semibold text-lg">Hobbies</span>
-            </div>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              <li>Going to the gym</li>
-              <li>Esports player</li>
-              <li>Enjoying long walks</li>
-            </ul>
-          </div>
+          ))}
         </div>
       </div>
     </section>

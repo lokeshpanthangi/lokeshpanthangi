@@ -1,174 +1,167 @@
-import { useState, useRef } from 'react';
-import { Download, Briefcase, GraduationCap, Code } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { useState } from 'react';
+import { Download, Briefcase, GraduationCap } from 'lucide-react';
+import { Liquid, type Colors } from '@/components/ui/button-1';
+
+const LIQUID_COLORS: Colors = {
+  color1: '#FFFFFF', color2: '#1E10C5', color3: '#9089E2', color4: '#FCFCFE',
+  color5: '#F9F9FD', color6: '#B2B8E7', color7: '#0E2DCB', color8: '#0017E9',
+  color9: '#4743EF', color10: '#7D7BF4', color11: '#0B06FC', color12: '#C5C1EA',
+  color13: '#1403DE', color14: '#B6BAF6', color15: '#C1BEEB', color16: '#290ECB',
+  color17: '#3F4CC0',
+};
+
+const ResumeButton = () => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href="/Lokesh_Panthangi.pdf"
+      download
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative inline-block h-[3em] w-56 rounded-lg border-2 border-white bg-black"
+      aria-label="Download Resume"
+    >
+      <div className="absolute left-1/2 top-[8.57%] h-[128.57%] w-[112.81%] -translate-x-1/2 opacity-70 blur-[19px]">
+        <span className="absolute inset-0 rounded-lg bg-[#d9d9d9] blur-[6.5px]" />
+        <div className="relative h-full w-full overflow-hidden rounded-lg">
+          <Liquid isHovered={hovered} colors={LIQUID_COLORS} />
+        </div>
+      </div>
+      <div className="absolute left-1/2 top-1/2 h-[112.85%] w-[92.23%] -translate-x-1/2 -translate-y-[40%] rounded-lg bg-[#010128] blur-[7.3px]" />
+      <div className="relative h-full w-full overflow-hidden rounded-lg">
+        <span className="absolute inset-0 rounded-lg bg-[#d9d9d9]" />
+        <span className="absolute inset-0 rounded-lg bg-black" />
+        <Liquid isHovered={hovered} colors={LIQUID_COLORS} />
+        {[1, 2, 3, 4, 5].map((i) => (
+          <span
+            key={i}
+            className={`absolute inset-0 rounded-lg border-[3px] border-solid border-white mix-blend-overlay ${
+              i <= 2 ? 'blur-[3px]' : i === 3 ? 'blur-[5px]' : 'blur-[4px]'
+            }`}
+          />
+        ))}
+        <span className="absolute left-1/2 top-1/2 h-[42.85%] w-[70.8%] -translate-x-1/2 -translate-y-[40%] rounded-lg bg-[#006] blur-[15px]" />
+      </div>
+      <span className="absolute inset-0 z-10 flex items-center justify-center gap-2 rounded-lg text-base font-semibold tracking-wide text-white transition-colors group-hover:text-yellow-300">
+        <Download className="h-5 w-5" /> Download Resume
+      </span>
+    </a>
+  );
+};
+
+interface Entry {
+  role: string;
+  org: string;
+  place: string;
+  period: string;
+  points: string[];
+}
+
+const experience: Entry[] = [
+  {
+    role: 'AI Engineer',
+    org: 'Driftal People Tech Solutions',
+    place: 'India',
+    period: 'Present',
+    points: [
+      'Building production AI systems — autonomous agents, retrieval-augmented pipelines and the evaluation/observability that keeps them reliable.',
+      'Working across the stack: LLM orchestration, tool/MCP integrations, and API delivery with Python and FastAPI.',
+    ],
+  },
+  {
+    role: 'Full Stack Machine Learning Intern',
+    org: 'Compunnel',
+    place: 'Hyderabad',
+    period: 'Jul 2024 – Dec 2024',
+    points: [
+      'Built part of a Django app for real-time monitoring of 50+ pressure pumps across locations, with self-initiated alerts and analytics.',
+      'Reduced dashboard latency by 18% by reworking data-retrieval algorithms over 50+ live pump feeds.',
+      'Automated notifications and reporting with Django Channels, cutting response time to critical issues by 30% via event-driven architecture.',
+    ],
+  },
+];
+
+const education: Entry[] = [
+  {
+    role: 'AI Engineering',
+    org: 'MisogiAI · Masai',
+    place: 'Bengaluru',
+    period: 'Jun 2025 – Present',
+    points: ['Advanced AI engineering — agents, RAG, transformers, fine-tuning and LLMOps.'],
+  },
+  {
+    role: 'B.Tech — Computer Science (AI & ML)',
+    org: 'Vasireddy Venkatadri Institute of Technology',
+    place: 'Guntur',
+    period: 'Nov 2021 – Apr 2025',
+    points: ['B.Tech in Computer Science Engineering, specialization in Artificial Intelligence and Machine Learning.'],
+  },
+];
+
+const Timeline = ({ entries }: { entries: Entry[] }) => (
+  <div className="relative space-y-8 pl-6">
+    <span className="absolute left-0 top-1 h-full w-px bg-white/10" />
+    {entries.map((e) => (
+      <div key={e.role + e.org} className="relative">
+        <span className="absolute -left-6 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full border border-white/40 bg-black" />
+        <div className="flex flex-col justify-between gap-1 md:flex-row md:items-center">
+          <h4 className="font-grotesk text-lg font-semibold text-white">{e.role}</h4>
+          <span className="font-space text-xs text-white/40">{e.period}</span>
+        </div>
+        <div className="mt-0.5 flex items-center gap-2 text-sm text-white/60">
+          <span>{e.org}</span><span className="text-white/25">·</span><span className="text-white/40">{e.place}</span>
+        </div>
+        <ul className="mt-3 space-y-2">
+          {e.points.map((p, i) => (
+            <li key={i} className="flex gap-2 text-sm leading-relaxed text-white/55">
+              <span className="mt-1 text-white/30">—</span>{p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+);
 
 const Resume = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('experience');
-  const [tabTransition, setTabTransition] = useState(false);
-  const resumeRef = useRef<HTMLDivElement>(null);
-
-  // Add animation when switching tabs
-  const handleTabChange = (tab: string) => {
-    if (tab === activeTab) return;
-    
-    setTabTransition(true);
-    setTimeout(() => {
-      setActiveTab(tab);
-      setTimeout(() => {
-        setTabTransition(false);
-      }, 50);
-    }, 200);
-  };
-
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/Lokesh_Panthangi.pdf';
-    link.download = 'Lokesh_Panthangi.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const [tab, setTab] = useState<'experience' | 'education'>('experience');
 
   return (
-    <section id="resume" className="py-20 relative overflow-hidden bg-white dark:bg-gray-900">
-      {/* Background decoration elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
-        <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-primary/30 blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-blue-400/20 blur-3xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-20 h-20 rounded-full bg-purple-400/30 blur-2xl"></div>
-      </div>
+    <section id="resume" className="relative overflow-hidden py-24">
+      <div className="container relative z-10 mx-auto px-6">
+        <p className="section-kicker">04 — Résumé</p>
+        <h2 className="section-title mt-3">Experience &amp; Education</h2>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="section-title with-glowing-dots">Resume</h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
-            A summary of my professional experience and education
-          </p>
-        </div>
-
-        <div ref={resumeRef} className="mt-12 max-w-6xl mx-auto">
-          {/* Resume Header with Download Button */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-t-2xl shadow-lg border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="mx-auto mt-12 max-w-4xl">
+          <div className="flex flex-col items-center justify-between gap-4 rounded-t-2xl border border-white/10 bg-white/[0.02] p-6 sm:flex-row">
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-blue-400 text-white">
-                <span className="text-2xl font-bold">V</span>
-              </div>
+              <div className="grid h-12 w-12 place-items-center rounded-full border border-white/20 font-grotesk text-lg font-bold text-white">VP</div>
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-primary">Venkata Lokesh Panthangi</h3>
-                <p className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                  <Code size={16} className="text-primary" />
-                  AI & ML Engineer
-                </p>
+                <div className="font-grotesk text-lg font-bold text-white">Venkata Lokesh Panthangi</div>
+                <div className="text-sm text-white/50">AI Engineer — Agentic AI · RAG · LLMOps</div>
               </div>
             </div>
-
-            <button
-              onClick={handleDownload}
-              disabled={isLoading}
-              className="resume-download-btn flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium transition-all duration-300 relative overflow-hidden"
-            >
-              {isLoading ? (
-                <>
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Processing...
-                </>
-              ) : (
-                <>
-                  <Download className="h-5 w-5" />
-                  Download Resume
-                </>
-              )}
-            </button>
+            <ResumeButton />
           </div>
 
-          {/* Tab Navigation */}
-          <div className="flex border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-b-none">
-            <button
-              onClick={() => handleTabChange('experience')}
-              className={`flex items-center gap-2 px-6 py-4 font-medium transition-all duration-300 ${activeTab === 'experience' ? 'text-primary border-b-2 border-primary' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'}`}
-            >
-              <Briefcase size={18} className={`transition-transform duration-300 ${activeTab === 'experience' ? 'scale-110 rotate-12' : ''}`} />
-              Experience
-            </button>
-            <button
-              onClick={() => handleTabChange('education')}
-              className={`flex items-center gap-2 px-6 py-4 font-medium transition-all duration-300 ${activeTab === 'education' ? 'text-primary border-b-2 border-primary' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'}`}
-            >
-              <GraduationCap size={18} className={`transition-transform duration-300 ${activeTab === 'education' ? 'scale-110 rotate-12' : ''}`} />
-              Education
-            </button>
+          {/* Tabs */}
+          <div className="flex border-x border-white/10 bg-white/[0.02]">
+            {(['experience', 'education'] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`flex flex-1 items-center justify-center gap-2 py-4 text-sm font-medium capitalize transition-colors ${
+                  tab === t ? 'bg-white/[0.04] text-white' : 'text-white/40 hover:text-white/70'
+                }`}
+              >
+                {t === 'experience' ? <Briefcase size={16} /> : <GraduationCap size={16} />}
+                {t}
+              </button>
+            ))}
           </div>
 
-          {/* Tab Content */}
-          <div className="bg-white dark:bg-gray-800 p-6 md:p-10 rounded-b-2xl shadow-lg border border-t-0 border-gray-100 dark:border-gray-700 min-h-[400px]">
-            {/* Content wrapper with transition */}
-            <div className={`transition-opacity duration-200 ${tabTransition ? 'opacity-0' : 'opacity-100'}`}>
-              {/* Experience Tab */}
-              {activeTab === 'experience' && (
-                <div className="space-y-6">
-                  {/* Brainovision Experience */}
-                  <div className="resume-card group">
-                    <div className="resume-card-timeline"></div>
-                    <div className="resume-card-dot"></div>
-                    <div className="resume-card-content">
-                      <div className="flex flex-row justify-between items-center mb-1">
-                        <h4 className="font-bold text-xl group-hover:text-primary transition-colors">Full Stack Developer</h4>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full inline-flex items-center ml-4">Jul 2024 – Jan 2025</span>
-                      </div>
-                      <div className="flex flex-row justify-between items-center mb-2">
-                        <span className="italic text-gray-800 dark:text-gray-200 font-normal">Compunnel</span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Hyderabad</span>
-                      </div>
-                      <ul className="list-disc pl-5 space-y-2 mt-2 text-gray-600 dark:text-gray-300">
-                        <li>Developed a Django app for real-time monitoring and management of 50+ pressure pumps, achieving 89.8% uptime.</li>
-                        <li>Improved operational efficiency and reduced downtime by 18% using predictive maintenance.</li>
-                        <li>Automated notifications and reporting with Django Channels, reducing response times by 30%.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                </div>
-              )}
-              
-              {/* Education Tab */}
-              {activeTab === 'education' && (
-                <div className="space-y-6">
-                  <div className="resume-card group">
-                    <div className="resume-card-timeline"></div>
-                    <div className="resume-card-dot"></div>
-                    <div className="resume-card-content">
-                      <div className="flex flex-col mb-2">
-                        <h5 className="text-primary mb-2 text-lg font-semibold">B.Tech in Computer Science Engineering - Artificial Intelligence and Machine Learning</h5>
-                        <div className="flex flex-row justify-between items-center">
-                          <span className="italic text-gray-800 dark:text-gray-200 font-normal">Vasireddy Venkatadri Institute of Technology</span>
-                          <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Guntur</span>
-                        </div>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">2021–2025</span>
-                      </div>
-                    </div>
-                  </div>
-            {/* Misogi AI by Masai */}
-                  <div className="resume-card group">
-                    <div className="resume-card-timeline"></div>
-                    <div className="resume-card-dot"></div>
-                    <div className="resume-card-content">
-                      <div className="flex flex-col mb-2">
-                        <h5 className="text-primary mb-2 text-lg font-semibold">Missogi AI - Advanced AI Teachnolgies (Agents, RAG, Transformers)</h5>
-                        <div className="flex flex-row justify-between items-center">
-                          <span className="italic text-gray-800 dark:text-gray-200 font-normal">Masai</span>
-                          <span className="text-sm text-gray-500 dark:text-gray-400 ml-4">Banglore</span>
-                        </div>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 mt-1">2025</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+          <div className="rounded-b-2xl border border-t-0 border-white/10 bg-white/[0.02] p-8 md:p-10">
+            <Timeline entries={tab === 'experience' ? experience : education} />
           </div>
         </div>
       </div>

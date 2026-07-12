@@ -1,215 +1,93 @@
 import { useState } from 'react';
-import { useToast } from "@/hooks/use-toast";
-import { Linkedin, Mail, Github } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { Linkedin, Mail, Github, Phone, MapPin, Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    emailjs.send(
-      'service_fmpx1xn',
-      'template_roxzdsp',
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-      },
-      'Oe4jvFItr1PiWo17O'
-    )
-    .then(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    emailjs
+      .send(
+        'service_fmpx1xn',
+        'template_roxzdsp',
+        { from_name: formData.name, from_email: formData.email, message: formData.message },
+        'Oe4jvFItr1PiWo17O'
+      )
+      .then(() => {
+        setIsSubmitting(false);
+        toast({ title: 'Message sent', description: "Thanks — I'll get back to you soon." });
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((error) => {
+        setIsSubmitting(false);
+        console.error('EmailJS error:', error);
+        toast({ title: 'Error', description: 'Could not send. Please try again later.', variant: 'destructive' });
       });
-      setFormData({ name: '', email: '', message: '' });
-    })
-    .catch((error) => {
-      setIsSubmitting(false);
-      console.error('EmailJS error:', error);
-      toast({
-        title: "Error",
-        description: "There was an error sending your message. Please try again later.",
-        variant: "destructive"
-      });
-    });
   };
-  
+
+  const inputCls =
+    'w-full rounded-xl border border-white/12 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-white/40 focus:outline-none';
+
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title">Add me to your Story</h2>
-        
-        <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="pl-8 md:pl-32 pt-8 md:pt-12">
-            <h3 className="text-2xl font-bold mb-6">Contact Info</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-1">Email</h4>
-                  <a href="mailto:lokeshpantangi@gmail.com" className="text-primary hover:underline">
-                    lokeshpantangi@gmail.com
-                  </a>
-                </div>
+    <section id="contact" className="relative overflow-hidden py-24">
+      <div className="container relative z-10 mx-auto px-6">
+        <p className="section-kicker">07 — Contact</p>
+        <h2 className="section-title mt-3">Let&apos;s build something</h2>
+
+        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
+          {/* Info */}
+          <div className="flex flex-col justify-between gap-8">
+            <div className="space-y-5">
+              <a href="mailto:lokeshpantangi@gmail.com" className="group flex items-center gap-4">
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/12 bg-white/[0.03] text-white/70 transition-colors group-hover:border-white/40 group-hover:text-white"><Mail size={18} /></span>
+                <span><span className="block text-xs text-white/40">Email</span><span className="text-white/80">lokeshpantangi@gmail.com</span></span>
+              </a>
+              <a href="tel:+919573580571" className="group flex items-center gap-4">
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/12 bg-white/[0.03] text-white/70 transition-colors group-hover:border-white/40 group-hover:text-white"><Phone size={18} /></span>
+                <span><span className="block text-xs text-white/40">Phone</span><span className="text-white/80">+91 95735 80571</span></span>
+              </a>
+              <div className="flex items-center gap-4">
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/12 bg-white/[0.03] text-white/70"><MapPin size={18} /></span>
+                <span><span className="block text-xs text-white/40">Location</span><span className="text-white/80">Bengaluru, India</span></span>
               </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-1">Phone</h4>
-                  <a href="tel:+919573580571" className="text-primary hover:underline">
-                    +91 9573580571
+            </div>
+
+            <div>
+              <p className="mb-3 text-xs uppercase tracking-widest text-white/40">Connect</p>
+              <div className="flex gap-3">
+                {[
+                  { icon: Github, href: 'https://github.com/lokeshpanthangi', label: 'GitHub' },
+                  { icon: Linkedin, href: 'https://www.linkedin.com/in/pvlokesh', label: 'LinkedIn' },
+                  { icon: Mail, href: 'mailto:lokeshpantangi@gmail.com', label: 'Email' },
+                ].map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/[0.03] text-white/70 transition-all hover:-translate-y-0.5 hover:border-white/40 hover:text-white">
+                    <s.icon size={18} />
                   </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-1">Location</h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Andhra Pradesh, India
-                  </p>
-                </div>
-              </div>
-              
-              <div className="mt-10">
-                <h4 className="text-lg font-medium mb-3">Connect With Me</h4>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://github.com/lokeshpanthangi" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
-                    aria-label="GitHub"
-                  >
-                    <Github className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/pvlokesh"
-                    target="_blank"
-                    rel="noopener noreferrer" 
-                    className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-                  </a>
-                  <a 
-                    href="mailto:lokeshpantangi@gmail.com"
-                    className="social-icon-btn bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-400/40 transition-all duration-300 hover:scale-110 transform hover:-translate-y-1"
-                    aria-label="Email"
-                  >
-                    <Mail className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-                  </a>
-                </div>
+                ))}
               </div>
             </div>
           </div>
-          
-          <div className="card-3d bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-bold mb-6">Send Message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-5 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white"
-                  placeholder="John Doe"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-5 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white"
-                  placeholder="john@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-5 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white"
-                  placeholder="How can I help you?"
-                />
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 rounded-lg bg-primary text-white font-medium transition-all duration-300 ${
-                  isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:bg-primary/90 hover:shadow-lg active:scale-98'
-                }`}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  'Send Message'
-                )}
-              </button>
-            </form>
-          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="card-mono space-y-4 p-7">
+            <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" className={inputCls} />
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Your email" className={inputCls} />
+            <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Your message" className={inputCls} />
+            <button type="submit" disabled={isSubmitting} className="btn-mono w-full disabled:opacity-60">
+              {isSubmitting ? 'Sending…' : (<>Send message <Send size={15} /></>)}
+            </button>
+          </form>
         </div>
       </div>
     </section>

@@ -1,130 +1,103 @@
 import { useState, useEffect } from 'react';
-import { ThemeToggle } from './ThemeToggle';
+import { Menu, X } from 'lucide-react';
+
+const navItems = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Resume', href: '#resume' },
+  { name: 'Blogs', href: '#blogs' },
+  { name: 'Certs', href: '#certificates' },
+  { name: 'Contact', href: '#contact' },
+];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('#home');
+
   useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      setScrolled(offset > 50);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Resume', href: '#resume' },
-    { name: 'Blogs', href: '#blogs' },
-    { name: 'Certificates', href: '#certificates' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const createRipple = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const button = e.currentTarget;
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
-    
-    const rect = button.getBoundingClientRect();
-    
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${e.clientX - rect.left - radius}px`;
-    circle.style.top = `${e.clientY - rect.top - radius}px`;
-    circle.classList.add('ripple');
-    
-    const ripple = button.getElementsByClassName('ripple')[0];
-    if (ripple) {
-      ripple.remove();
-    }
-    
-    button.appendChild(circle);
-    
-    // Clean up ripple after animation completes
-    setTimeout(() => {
-      circle.remove();
-    }, 600);
-  };
+  useEffect(() => {
+    const ids = navItems.map((n) => n.href.slice(1));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(`#${e.target.id}`);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled 
-          ? 'py-3 bg-white/80 dark:bg-dark/80 backdrop-blur-lg shadow-md'
-          : 'py-6 bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <a href="#home" className="text-xl md:text-2xl font-bold text-primary flex items-center gap-2 -ml-2">
-            <span className={`text-2xl md:text-3xl transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
-              Lokesh
-            </span>
-          </a>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="nav-item"
-                onClick={createRipple}
-              >
-                {item.name}
-              </a>
-            ))}
-            <ThemeToggle />
-          </nav>
-          
-          {/* Mobile Menu Toggle */}
-          <div className="flex items-center md:hidden gap-4">
-            <ThemeToggle />
-            <button 
-              className="text-2xl focus:outline-none" 
-              onClick={toggleMobileMenu}
-              aria-label="Toggle Menu"
+    <header className="fixed inset-x-0 top-0 z-40 flex justify-center px-4 pt-4">
+      <div
+        className={`flex w-full max-w-5xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ${
+          scrolled ? 'glass shadow-[0_8px_30px_rgba(0,0,0,0.5)]' : 'border border-transparent'
+        }`}
+      >
+        <a href="#home" className="group flex items-center gap-2 pl-2 font-grotesk text-lg font-bold text-white">
+          <span className="grid h-7 w-7 place-items-center rounded-md border border-white/20 text-sm">L</span>
+          <span className="hidden sm:inline">Lokesh<span className="text-white/40">.</span></span>
+        </a>
+
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-0.5 md:flex">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className={`rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 ${
+                active === item.href ? 'bg-white text-black' : 'text-white/60 hover:text-white'
+              }`}
             >
-              <div className="w-6 h-5 flex flex-col justify-between">
-                <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`w-full h-0.5 bg-current transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-                <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-              </div>
-            </button>
-          </div>
-        </div>
-        
-        {/* Mobile Navigation */}
-        <div 
-          className={`md:hidden transition-all duration-300 overflow-hidden ${
-            mobileMenuOpen ? 'max-h-[500px] mt-4' : 'max-h-0'
-          }`}
+              {item.name}
+            </a>
+          ))}
+        </nav>
+
+        <a href="#contact" className="hidden rounded-full bg-white px-4 py-1.5 text-sm font-medium text-black transition-transform hover:-translate-y-0.5 md:inline-flex">
+          Let&apos;s talk
+        </a>
+
+        {/* Mobile toggle */}
+        <button
+          className="grid h-9 w-9 place-items-center rounded-full text-white md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
         >
-          <nav className="flex flex-col items-center py-2">
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="glass absolute top-20 left-4 right-4 rounded-2xl p-2 md:hidden">
+          <nav className="flex flex-col">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="w-full text-center py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-4 py-3 text-center text-white/70 transition-colors hover:bg-white/5 hover:text-white"
               >
                 {item.name}
               </a>
             ))}
           </nav>
         </div>
-      </div>
+      )}
     </header>
   );
 };

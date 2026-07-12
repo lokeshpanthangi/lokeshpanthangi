@@ -1,66 +1,35 @@
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const footerRef = useRef(null);
-  const controls = useAnimation();
-  const inView = useInView(footerRef, { once: false });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({ scale: [1.2, 1], opacity: 1, transition: { duration: 0.8, type: 'spring', bounce: 0.5 } });
-    } else {
-      controls.set({ scale: 0.8, opacity: 0 });
-    }
-  }, [inView, controls]);
-
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-dark text-white py-8" ref={footerRef}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <motion.a
-              href="#home"
-              className="text-2xl font-bold text-blue-500 bg-gradient-to-r from-blue-400 via-pink-500 to-purple-500 bg-clip-text text-transparent"
-              animate={controls}
-              initial={{ scale: 0.8, opacity: 0 }}
-            >
-              Lokesh
-            </motion.a>
-            <p className="mt-1 text-gray-400">Bringing ideas to life through code</p>
+    <footer className="relative border-t border-white/10">
+      <div className="container mx-auto px-6 py-12">
+        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+          <div className="text-center md:text-left">
+            <a href="#home" className="font-grotesk text-2xl font-bold text-white">Lokesh<span className="text-white/40">.</span></a>
+            <p className="mt-1 text-sm text-white/45">AI Engineer — Agentic AI · RAG · LLMOps</p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {[
+              { icon: Github, href: 'https://github.com/lokeshpanthangi', label: 'GitHub' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/pvlokesh', label: 'LinkedIn' },
+              { icon: Mail, href: 'mailto:lokeshpantangi@gmail.com', label: 'Email' },
+            ].map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/12 text-white/60 transition-all hover:-translate-y-0.5 hover:border-white/40 hover:text-white">
+                <s.icon size={16} />
+              </a>
+            ))}
           </div>
         </div>
-        
-        <div className="mt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© {currentYear} Your Name. All rights reserved.</p>
-          
-          <div className="mt-4 md:mt-0 flex items-center space-x-6">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              GitHub
-            </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              Twitter
-            </a>
-          </div>
+
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/40 md:flex-row">
+          <p>© {year} Venkata Lokesh Panthangi. All rights reserved.</p>
+          <a href="#home" className="inline-flex items-center gap-1.5 transition-colors hover:text-white">
+            Back to top <ArrowUp size={14} />
+          </a>
         </div>
       </div>
     </footer>
