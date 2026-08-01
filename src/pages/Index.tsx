@@ -46,7 +46,6 @@ const Index = () => {
           hue={0}
           startVh={50}
           spaceVh={50}
-          taglineHTML="and I&apos;ll show you how."
         />
         <Projects />
         <Skills />
