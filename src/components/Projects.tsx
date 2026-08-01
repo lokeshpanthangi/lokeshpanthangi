@@ -98,7 +98,7 @@ const Projects = () => {
   return (
     <section id="projects" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">03 — Work</p>
+        <p className="section-kicker">02 — Work</p>
         <div className="mt-3 flex flex-col items-center gap-4">
           <h2 className="section-title">Selected Projects</h2>
           <p className="max-w-xl text-center text-white/50">
@@ -111,7 +111,7 @@ const Projects = () => {
             <TiltCard key={p.repo} max={5}>
               <article
                 style={{ ['--c' as string]: p.color }}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-[color:var(--c)] hover:shadow-[0_16px_50px_-16px_var(--c)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] transition-all duration-300 hover:border-[color:var(--c)] hover:shadow-[0_16px_50px_-16px_var(--c)]"
               >
                 {/* top accent */}
                 <span className="absolute inset-x-0 top-0 z-20 h-[2px] opacity-70 transition-opacity duration-300 group-hover:opacity-100" style={{ background: `linear-gradient(90deg, ${p.color}, transparent)` }} />

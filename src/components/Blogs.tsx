@@ -25,7 +25,7 @@ const Blogs = () => {
   return (
     <section id="blogs" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">05 — Writing</p>
+        <p className="section-kicker">06 — Writing</p>
         <h2 className="section-title mt-3">From the Blog</h2>
 
         <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">

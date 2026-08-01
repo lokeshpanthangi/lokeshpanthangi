@@ -41,7 +41,7 @@ const Contact = () => {
   return (
     <section id="contact" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">07 — Contact</p>
+        <p className="section-kicker">08 — Contact</p>
         <h2 className="section-title mt-3">Let&apos;s build something</h2>
 
         <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">

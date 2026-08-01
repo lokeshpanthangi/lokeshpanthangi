@@ -17,7 +17,7 @@ const About = () => {
   return (
     <section id="about" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">01 — About</p>
+        <p className="section-kicker">04 — About</p>
         <h2 className="section-title mt-3">Who I am</h2>
 
         <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-3">

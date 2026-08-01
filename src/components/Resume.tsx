@@ -129,11 +129,11 @@ const Resume = () => {
   return (
     <section id="resume" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">04 — Résumé</p>
+        <p className="section-kicker">05 — Résumé</p>
         <h2 className="section-title mt-3">Experience &amp; Education</h2>
 
         <div className="mx-auto mt-12 max-w-4xl">
-          <div className="flex flex-col items-center justify-between gap-4 rounded-t-2xl border border-white/10 bg-white/[0.02] p-6 sm:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4 rounded-t-2xl border border-white/10 bg-[#0b0b0b] p-6 sm:flex-row">
             <div className="flex items-center gap-4">
               <div className="grid h-12 w-12 place-items-center rounded-full border border-white/20 font-grotesk text-lg font-bold text-white">VP</div>
               <div>
@@ -145,7 +145,7 @@ const Resume = () => {
           </div>
 
           {/* Tabs */}
-          <div className="flex border-x border-white/10 bg-white/[0.02]">
+          <div className="flex border-x border-white/10 bg-[#0b0b0b]">
             {(['experience', 'education'] as const).map((t) => (
               <button
                 key={t}
@@ -160,7 +160,7 @@ const Resume = () => {
             ))}
           </div>
 
-          <div className="rounded-b-2xl border border-t-0 border-white/10 bg-white/[0.02] p-8 md:p-10">
+          <div className="rounded-b-2xl border border-t-0 border-white/10 bg-[#0b0b0b] p-8 md:p-10">
             <Timeline entries={tab === 'experience' ? experience : education} />
           </div>
         </div>

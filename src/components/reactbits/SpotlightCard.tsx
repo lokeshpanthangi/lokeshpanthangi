@@ -21,7 +21,7 @@ const SpotlightCard = ({ children, className = '' }: SpotlightCardProps) => {
     <div
       ref={ref}
       onMouseMove={onMove}
-      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] ${className}`}
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"

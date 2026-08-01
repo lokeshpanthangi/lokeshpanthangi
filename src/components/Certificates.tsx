@@ -22,7 +22,7 @@ const Certificates = () => {
   return (
     <section id="certificates" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">06 — Credentials</p>
+        <p className="section-kicker">07 — Credentials</p>
         <h2 className="section-title mt-3">Certificates</h2>
 
         <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -32,7 +32,7 @@ const Certificates = () => {
                 href={c.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-44 flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-white/25"
+                className="group relative flex h-44 flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] p-6 transition-colors duration-300 hover:border-white/25"
               >
                 <div className="flex items-start justify-between">
                   <Award className="text-white/70" size={22} />

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import { WordHeroPage } from '@/components/ui/scroll-hero-section';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
@@ -37,9 +38,19 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <About />
-        <Skills />
+        <WordHeroPage
+          prefix="I can"
+          items={['build agents.', 'design RAG.', 'ship pipelines.', 'evaluate LLMs.', 'prototype.', 'solve.', 'develop.']}
+          theme="dark"
+          animate
+          hue={0}
+          startVh={50}
+          spaceVh={50}
+          taglineHTML="and I&apos;ll show you how."
+        />
         <Projects />
+        <Skills />
+        <About />
         <Resume />
         <Blogs />
         <Certificates />

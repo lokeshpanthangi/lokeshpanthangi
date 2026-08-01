@@ -26,7 +26,7 @@ const Skills = () => {
   return (
     <section id="skills" className="relative overflow-hidden py-24">
       <div className="container relative z-10 mx-auto px-6">
-        <p className="section-kicker">02 — Toolkit</p>
+        <p className="section-kicker">03 — Toolkit</p>
         <h2 className="section-title mt-3">Skills &amp; Stack</h2>
 
         <div className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-2xl border border-white/12 bg-[#0b0b0b] shadow-[0_24px_80px_-24px_rgba(0,0,0,0.8)]">
