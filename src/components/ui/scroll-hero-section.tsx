@@ -8,6 +8,8 @@ export type ShipStickyHeaderProps = {
   items?: string[];
   /** Prefix shown before the cycling words */
   prefix?: string;
+  /** Sets CSS var --count automatically from items length */
+  showFooter?: boolean;
   /** UI theme (affects accent + panel colors) */
   theme?: Theme;
   /** Enable view-timeline animations if supported */
@@ -20,17 +22,21 @@ export type ShipStickyHeaderProps = {
   spaceVh?: number;
   /** Debug outline (for dev) */
   debug?: boolean;
+  /** Optional custom intro text in the reveal panel */
+  taglineHTML?: string;
 };
 
 function WordHeroPage({
   items = ['build agents.', 'design RAG.', 'ship pipelines.', 'evaluate LLMs.', 'prototype.', 'solve.', 'develop.'],
   prefix = 'I can',
+  showFooter = false,
   theme = 'dark',
   animate = true,
   hue = 0,
   startVh = 50,
   spaceVh = 50,
   debug = false,
+  taglineHTML = 'and I&apos;ll show you how.',
 }: ShipStickyHeaderProps) {
   const rootStyle = {
     '--count': items.length,
@@ -68,6 +74,18 @@ function WordHeroPage({
           </ul>
         </section>
       </header>
+
+      <main className="scroll-hero-main">
+        <section className="scroll-hero-fluid scroll-hero-main-section">
+          <p dangerouslySetInnerHTML={{ __html: taglineHTML }} />
+        </section>
+      </main>
+
+      {showFooter && (
+        <footer className="scroll-hero-footer">
+          Venkata Lokesh Panthangi &copy; {new Date().getFullYear()}
+        </footer>
+      )}
     </div>
   );
 }
